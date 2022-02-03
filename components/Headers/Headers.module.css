@@ -17,14 +17,14 @@
 }
 
 .LogoContainer {
-  padding: 0.5rem 1rem 0.5rem 0.5rem;
+  padding: 0.5rem 1rem;
 }
 
 .Nav {
   display: flex;
   justify-content: flex-start;
   height: 100%;
-  padding: 0.5rem;
+  padding: 0.5rem 1rem;
 }
 
 .Nav a,
@@ -46,7 +46,7 @@
   top: 3.25rem;
   right: 0;
   display: flex;
-  padding: 0.5rem;
+  padding: 0.5rem 1rem;
   visibility: hidden;
   opacity: 0;
   transition: opacity 500ms linear;
@@ -55,7 +55,7 @@
 .MenuContainer {
   display: flex;
   align-items: center;
-  padding: 0.5rem;
+  padding: 0.5rem 1rem;
   position: relative;
   cursor: pointer;
 }
@@ -89,7 +89,7 @@
   padding: 0.25rem 1rem;
   background-color: var(--color-light-a);
   border-radius: 0.5rem;
-  box-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
   position: relative;
 }
 .NavB ul::after {

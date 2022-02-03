@@ -1,0 +1,26 @@
+.QuizSearchForm .InputContainer {
+  display: flex;
+  flex-direction: column;
+}
+.QuizSearchForm .InputBox {
+  display: flex;
+}
+.QuizSearchForm .InputBox input {
+  display: flex;
+  max-width: 420px;
+  width: 100%;
+  background-color: transparent;
+  border: 1px solid var(--color-light-a);
+  font-size: inherit;
+  font-family: inherit;
+  color: currentColor;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+}
+.QuizSearchForm .InputBox input:focus {
+  outline: none;
+  box-shadow: 0 0 2px currentColor;
+}
+.QuizSearchForm .InputBox input:hover {
+  box-shadow: 0 0 2px currentColor;
+}
