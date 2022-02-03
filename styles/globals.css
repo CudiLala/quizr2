@@ -1,3 +1,17 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  line-height: 1.5em;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
 html,
 body {
   padding: 0;
@@ -13,26 +27,30 @@ a {
   text-decoration: none;
   cursor: pointer;
 }
+a:focus,
+.focusable:focus {
+  outline: 1px solid orange;
+}
 
 nav li {
   list-style-type: none;
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+p {
+  word-spacing: 0.25em;
 }
 
 #body {
   --color-bg: hsl(210, 43%, 27%);
   --color-light-a: hsl(210, 43%, 35%);
   --color-light-b: hsl(210, 43%, 65%);
+  --color-light-c: hsl(210, 43%, 90%);
   --color-orange: hsl(39, 100%, 50%);
 
   width: 100%;
   min-height: 100vh;
   background-color: var(--color-bg);
+  color: var(--color-light-c);
 }
 
 .content-width {

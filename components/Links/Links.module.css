@@ -12,7 +12,7 @@
 @keyframes blink {
   0%,
   100% {
-    color: white;
+    color: hsl(210, 45%, 90%);
   }
   50% {
     color: hsl(210, 45%, 80%);

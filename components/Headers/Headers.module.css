@@ -69,10 +69,12 @@
   transition: all 500ms linear;
 }
 
-.MenuContainer:hover .MenuBox {
+.MenuBox:hover,
+.MenuBox:focus {
   background-color: var(--color-light-a);
 }
-.MenuContainer:hover .NavB {
+.MenuBox:hover ~ .NavB,
+.MenuBox:focus ~ .NavB {
   visibility: visible;
   opacity: 1;
 }
