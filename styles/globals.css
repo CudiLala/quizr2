@@ -31,10 +31,6 @@ a {
   text-decoration: none;
   cursor: pointer;
 }
-a:focus,
-.focusable:focus {
-  outline: 1px solid orange;
-}
 
 nav li {
   list-style-type: none;

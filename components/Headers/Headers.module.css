@@ -75,7 +75,6 @@
 
 .MenuContainer:hover .MenuBox,
 .MenuContainer:focus .MenuBox {
-  outline: 1px solid orange;
   background-color: var(--color-light-a);
 }
 .MenuContainer:hover .NavB,
