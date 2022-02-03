@@ -59,6 +59,10 @@
   position: relative;
   cursor: pointer;
 }
+.MenuContainer:focus {
+  outline: none;
+  border: none;
+}
 .MenuBox {
   display: flex;
   width: 2.5rem;
@@ -69,12 +73,13 @@
   transition: all 500ms linear;
 }
 
-.MenuBox:hover,
-.MenuBox:focus {
+.MenuContainer:hover .MenuBox,
+.MenuContainer:focus .MenuBox {
+  outline: 1px solid orange;
   background-color: var(--color-light-a);
 }
-.MenuBox:hover ~ .NavB,
-.MenuBox:focus ~ .NavB {
+.MenuContainer:hover .NavB,
+.MenuContainer:focus .NavB {
   visibility: visible;
   opacity: 1;
 }

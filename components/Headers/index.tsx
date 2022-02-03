@@ -68,8 +68,8 @@ export const HeaderA: React.FC = () => {
             </ul>
           </nav>
         ) : (
-          <div className={styles.MenuContainer}>
-            <span tabIndex={0} className={`${styles.MenuBox} focusable`}>
+          <div tabIndex={0} className={`${styles.MenuContainer}`}>
+            <span className={`${styles.MenuBox}`}>
               <MenuIcon />
             </span>
             <nav className={styles.NavB}>
