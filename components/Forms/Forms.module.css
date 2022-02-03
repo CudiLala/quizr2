@@ -10,17 +10,20 @@
   max-width: 420px;
   width: 100%;
   background-color: transparent;
-  border: 1px solid var(--color-light-a);
+  border: 2px solid var(--color-light-a);
   font-size: inherit;
   font-family: inherit;
-  color: currentColor;
+  color: var(--color-light-b);
   border-radius: 0.5rem;
   padding: 0.5rem 1rem;
+  transition: all 200ms linear;
 }
 .QuizSearchForm .InputBox input:focus {
   outline: none;
-  box-shadow: 0 0 2px currentColor;
+  border: 2px solid var(--color-light-b);
+  color: currentColor;
 }
 .QuizSearchForm .InputBox input:hover {
-  box-shadow: 0 0 2px currentColor;
+  color: currentColor;
+  border: 2px solid var(--color-light-b);
 }

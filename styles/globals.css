@@ -37,6 +37,7 @@ nav li {
 }
 
 p {
+  font-size: inherit;
   word-spacing: 0.25em;
 }
 
