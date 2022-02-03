@@ -1,0 +1,107 @@
+.HeaderA {
+  height: 3.5rem;
+  width: 100%;
+  border-bottom: 2px solid var(--color-light-a);
+}
+
+.Marger {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.HeaderA div {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.LogoContainer {
+  padding: 0.5rem 1rem 0.5rem 0.5rem;
+}
+
+.Nav {
+  display: flex;
+  justify-content: flex-start;
+  height: 100%;
+  padding: 0.5rem;
+}
+
+.Nav a,
+.Nav li,
+.Nav ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  height: 100%;
+}
+
+.Nav li {
+  padding: 0 1rem;
+}
+
+.NavB {
+  position: absolute;
+  top: 3.25rem;
+  right: 0;
+  display: flex;
+  padding: 0.5rem;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 500ms linear;
+}
+
+.MenuContainer {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  position: relative;
+  cursor: pointer;
+}
+.MenuBox {
+  display: flex;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0.25rem;
+  border-radius: 50%;
+  color: var(--color-orange);
+  transition: all 500ms linear;
+}
+
+.MenuContainer:hover .MenuBox {
+  background-color: var(--color-light-a);
+}
+.MenuContainer:hover .NavB {
+  visibility: visible;
+  opacity: 1;
+}
+
+.NavB ul {
+  display: flex;
+  flex-direction: column;
+  padding: 0.25rem 1rem;
+  background-color: var(--color-light-a);
+  border-radius: 0.5rem;
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
+  position: relative;
+}
+.NavB ul::after {
+  content: " ";
+  position: absolute;
+  bottom: 100%;
+  right: 0.75rem;
+  margin-left: -10px;
+  border-width: 10px;
+  border-style: solid;
+  border-color: transparent transparent var(--color-light-a) transparent;
+}
+.NavB li {
+  padding: 0.25rem 0;
+}
+
+.NavB a {
+  height: 3rem;
+  display: flex;
+  align-items: center;
+}
