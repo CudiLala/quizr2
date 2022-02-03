@@ -17,6 +17,7 @@ const Home: NextPageWithLayout = () => {
       <Box size={[4, 8]}>
         <QuizSearchForm />
       </Box>
+      <p>lomg</p>
     </section>
   );
 };
