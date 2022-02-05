@@ -13,6 +13,7 @@ const Home: NextPageWithLayout = () => {
           following quizes below. You can search for quizes or sort based on
           category, difficulty or popularity. Good luck &#128077;.
         </p>
+        <p>Search:</p>
       </Box>
       <Box size={[4, 8]}>
         <QuizSearchForm />
