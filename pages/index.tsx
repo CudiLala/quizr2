@@ -5,7 +5,7 @@ import { QuizSearchForm } from "components/Forms";
 
 const Home: NextPageWithLayout = () => {
   return (
-    <section className="content-width">
+    <div className="content-width">
       <Box size={[8, 8, 4]}>
         <span>
           Hi, Welcome to Quizr. Test your knowledge on some mind blowing facts
@@ -17,7 +17,7 @@ const Home: NextPageWithLayout = () => {
       <Box size={[4, 8]}>
         <QuizSearchForm />
       </Box>
-    </section>
+    </div>
   );
 };
 
