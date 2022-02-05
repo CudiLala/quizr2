@@ -7,7 +7,7 @@ const Home: NextPageWithLayout = () => {
   return (
     <div className="content-width">
       <Box size={[8, 8, 4]}>
-        <p>
+        <p style={{ display: "inline" }}>
           Hi, Welcome to Quizr. Test your knowledge on some mind blowing facts
           you may or may not know about. To get started, choose one of the
           following quizes below. You can search for quizes or sort based on
@@ -21,6 +21,6 @@ const Home: NextPageWithLayout = () => {
   );
 };
 
-// Home.getLayout = LayoutA;
+Home.getLayout = LayoutA;
 
 export default Home;
