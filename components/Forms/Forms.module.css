@@ -1,3 +1,8 @@
+.QuizSearchForm {
+  border-top: 1px solid var(--color-light-a);
+  border-bottom: 1px solid var(--color-light-a);
+}
+
 .QuizSearchForm .InputContainer {
   display: flex;
   flex-direction: column;
