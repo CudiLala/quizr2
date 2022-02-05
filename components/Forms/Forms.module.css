@@ -1,6 +1,7 @@
 .QuizSearchForm {
-  border-top: 1px solid var(--color-light-a);
-  border-bottom: 1px solid var(--color-light-a);
+  border-top: 2px solid var(--color-light-a);
+  border-bottom: 2px solid var(--color-light-a);
+  padding: 0.5rem 0;
 }
 
 .QuizSearchForm .InputContainer {
