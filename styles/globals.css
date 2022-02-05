@@ -46,7 +46,7 @@ button:not(.default) {
   --color-light-c: hsl(210, 43%, 90%);
   --color-orange: hsl(39, 100%, 50%);
 
-  background-color: var(--bg);
+  background-color: var(--color-bg);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
