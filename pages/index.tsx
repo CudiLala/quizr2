@@ -21,6 +21,6 @@ const Home: NextPageWithLayout = () => {
   );
 };
 
-Home.getLayout = LayoutA;
+// Home.getLayout = LayoutA;
 
 export default Home;
