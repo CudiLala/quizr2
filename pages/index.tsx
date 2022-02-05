@@ -7,14 +7,12 @@ const Home: NextPageWithLayout = () => {
   return (
     <div className="content-width">
       <Box size={[8, 8, 4]}>
-        <form action="">
-          <label>
-            Hi, Welcome to Quizr. Test your knowledge on some mind blowing facts
-            you may or may not know about. To get started, choose one of the
-            following quizes below. You can search for quizes or sort based on
-            category, difficulty or popularity. Good luck &#128077;.
-          </label>
-        </form>
+        <p>
+          Hi, Welcome to Quizr. Test your knowledge on some mind blowing facts
+          you may or may not know about. To get started, choose one of the
+          following quizes below. You can search for quizes or sort based on
+          category, difficulty or popularity. Good luck &#128077;.
+        </p>
       </Box>
       <Box size={[4, 8]}>
         <QuizSearchForm />
