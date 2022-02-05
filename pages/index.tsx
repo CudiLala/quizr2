@@ -7,16 +7,12 @@ const Home: NextPageWithLayout = () => {
   return (
     <div className="content-width">
       <Box size={[8, 8, 4]}>
-        <p>Hi, Welcome to Quizr.</p>
-        <Box size={[2, 0, 0]}>
-          <p style={{ fontSize: "1rem" }}>
-            Test your knowledge on some mind blowing facts you may or may not
-            know about. To get started, choose one of the following quizes
-            below. You can search for quizes or sort based on category,
-            difficulty or popularity. Good luck &#128077;.
-          </p>
-        </Box>
-        <p>Search.</p>
+        <p>
+          Hi, Welcome to Quizr. Test your knowledge on some mind blowing facts
+          you may or may not know about. To get started, choose one of the
+          following quizes below. You can search for quizes or sort based on
+          category, difficulty or popularity. Good luck &#128077;.
+        </p>
       </Box>
       <Box size={[4, 8]}>
         <QuizSearchForm />
