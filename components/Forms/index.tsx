@@ -6,7 +6,7 @@ export const QuizSearchForm: React.FC = () => {
   return (
     <form className={styles.QuizSearchForm}>
       <Box _className={styles.InputContainer} size={[0, 0, 4]}>
-        <label>Search:</label>
+        <label style={{ fontSize: "1rem" }}>Search:</label>
         <Box _className={styles.InputBox} size={[1, 0, 0]}>
           <input type="text" />
         </Box>
