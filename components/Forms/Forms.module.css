@@ -21,7 +21,7 @@
   font-family: inherit;
   color: var(--color-light-b);
   border-radius: 0.5rem;
-  padding: 0.5rem 1rem;
+  padding: 0.375rem 1rem;
   transition: all 200ms linear;
 }
 .QuizSearchForm .InputBox input:focus {
