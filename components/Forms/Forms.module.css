@@ -33,3 +33,21 @@
   color: currentColor;
   border: 2px solid var(--color-light-b);
 }
+.QuizSearchForm .Selection {
+  display: flex;
+  padding: 0.5rem 0 0;
+}
+.QuizSearchForm .Selection .Options {
+  padding: 0.25rem 1rem;
+  border-radius: 1rem;
+  border: 2px solid var(--color-light-a);
+  cursor: pointer;
+  margin-right: 1rem;
+  font-size: 0.9rem;
+}
+.QuizSearchForm .Selection .Options:hover {
+  background-color: var(--color-light-a-t);
+}
+.QuizSearchForm .Selection .Options.Selected {
+  background-color: var(--color-light-a);
+}

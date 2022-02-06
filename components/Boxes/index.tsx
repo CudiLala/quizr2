@@ -13,9 +13,10 @@ const Box: React.FC<Props> = ({
   passProps = {},
 }) => {
   const Style: React.CSSProperties = { padding: "" };
-  size.forEach((num, idx) => {
-    Style.padding = Style.padding?.toString() + `${num! * 0.125}rem `;
-  });
+  if (size)
+    size.forEach((num, idx) => {
+      Style.padding = Style.padding?.toString() + `${num! * 0.125}rem `;
+    });
   return (
     <div
       className={`${_className}`}

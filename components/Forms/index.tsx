@@ -13,7 +13,19 @@ export const QuizSearchForm: React.FC = () => {
       </Box>
       <Box size={[0, 0, 4]} _className={styles.InputContainer}>
         <label>Sort By:</label>
+        <Selection>
+          <Options>Difficulty</Options>
+          <Options>Popularity</Options>
+          <Options>A-Z</Options>
+        </Selection>
       </Box>
     </form>
   );
+};
+
+const Selection: React.FC = ({ children }) => {
+  return <div className={styles.Selection}>{children}</div>;
+};
+const Options: React.FC = ({ children }) => {
+  return <div className={styles.Options}>{children}</div>;
 };
