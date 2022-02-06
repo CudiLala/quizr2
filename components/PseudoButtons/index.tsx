@@ -2,21 +2,14 @@ import React, { useState } from "react";
 import { DefaultProps } from "types/app";
 import styles from "./PseudoButtons.module.css";
 
-const Button: React.FC<DefaultProps> = ({
-  children,
-  _className = "",
-  _style = {},
-  passProps = {},
-}) => {
-  return <span className={styles.Button}>{children}</span>;
-};
-
-export default Button;
-
 interface DescProps extends DefaultProps {
   icon: React.ReactElement;
   title: string;
   colors: [string, string];
+}
+interface Button extends DefaultProps {
+  type?: "button" | "submit" | "reset";
+  colored?: boolean;
 }
 
 export const DescButton: React.FC<DescProps> = ({
@@ -76,5 +69,17 @@ export const DescButton2: React.FC<DescProps> = ({
         {title.toLowerCase()}
       </span>
     </span>
+  );
+};
+
+export const Button: React.FC<Button> = ({
+  type = "button",
+  colored,
+  children,
+}) => {
+  return (
+    <button type={type} className={styles.Button}>
+      {children}
+    </button>
   );
 };

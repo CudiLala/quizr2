@@ -1,7 +1,6 @@
 .QuizSearchForm {
   border-top: 2px solid var(--color-light-a);
   border-bottom: 2px solid var(--color-light-a);
-  padding: 0.5rem 0;
 }
 
 .QuizSearchForm .InputContainer {
@@ -21,7 +20,7 @@
   font-family: inherit;
   color: var(--color-light-b);
   border-radius: 0.5rem;
-  padding: 0.375rem 1rem;
+  padding: 0.375rem 0.75rem;
   transition: all 200ms linear;
 }
 .QuizSearchForm .InputBox input:focus {
@@ -36,18 +35,73 @@
 .QuizSearchForm .Selection {
   display: flex;
   padding: 0.5rem 0 0;
+  align-items: flex-start;
+  flex-wrap: wrap;
 }
 .QuizSearchForm .Selection .Options {
   padding: 0.25rem 1rem;
   border-radius: 1rem;
   border: 2px solid var(--color-light-a);
   cursor: pointer;
-  margin-right: 1rem;
+  margin: 0 1rem 0.5rem 0;
   font-size: 0.9rem;
+  transition: all linear 200ms;
+  word-break: keep-all;
+  white-space: nowrap;
 }
 .QuizSearchForm .Selection .Options:hover {
   background-color: var(--color-light-a-t);
 }
 .QuizSearchForm .Selection .Options.Selected {
   background-color: var(--color-light-a);
+}
+
+/* --------- SIGNIN FORM ------------ */
+
+.SignInForm legend {
+  text-transform: uppercase;
+  text-align: center;
+  width: 100%;
+}
+.SignInForm .InputContainer {
+  display: flex;
+  flex-direction: column;
+}
+.SignInForm .InputBox {
+  display: flex;
+}
+.SignInForm .InputBox input {
+  display: flex;
+  max-width: 420px;
+  width: 100%;
+  background-color: transparent;
+  border: 2px solid var(--color-light-a);
+  font-size: inherit;
+  font-family: inherit;
+  color: var(--color-light-b);
+  border-radius: 0.5rem;
+  padding: 0.375rem 0.75rem;
+  transition: all 200ms linear;
+}
+.SignInForm .InputBox input:focus {
+  outline: none;
+  border: 2px solid var(--color-light-b);
+  color: currentColor;
+}
+.SignInForm .InputBox input:hover {
+  color: currentColor;
+  border: 2px solid var(--color-light-b);
+}
+.SignInForm .Link {
+  color: var(--color-light-b);
+  font-size: 0.9rem;
+  padding: 0.25rem 0 0.125rem;
+  display: inline-block;
+  justify-content: flex-start;
+  border-bottom: 1px dashed transparent;
+  transition: all 200ms linear;
+}
+.SignInForm .Link:hover {
+  color: var(--color-light-c);
+  border-bottom: 1px dashed currentColor;
 }

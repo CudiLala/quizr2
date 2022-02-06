@@ -43,6 +43,9 @@ a {
   text-decoration: none;
   cursor: pointer;
 }
+button {
+  cursor: pointer;
+}
 input {
   font-size: inherit;
 }
@@ -56,6 +59,7 @@ nav li {
   --color-light-a: hsl(210, 43%, 35%);
   --color-light-b: hsl(210, 43%, 65%);
   --color-light-c: hsl(210, 43%, 90%);
+  --color-light-d: hsl(210, 43%, 95%);
   --color-orange: hsl(39, 100%, 50%);
   --color-light-a-t: hsl(210, 43%, 35%, 0.4);
 
@@ -72,7 +76,20 @@ nav li {
   margin: 0 auto;
 }
 
+.box-width {
+  max-width: 420px;
+  width: 100%;
+  margin: 0 auto;
+}
+
 p {
   font-size: inherit;
   word-spacing: 0.2rem;
+}
+
+.t-bold {
+  font-family: OpenSansBold, "Open Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  width: 100%;
+  font-weight: 800;
 }

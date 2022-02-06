@@ -48,7 +48,7 @@ export const HeaderA: React.FC = () => {
                 </LinkA>
               </li>
               <li>
-                <LinkA>
+                <LinkA href="/sign">
                   <DescButton
                     icon={<SignInIcon />}
                     title="Sign In"
@@ -57,7 +57,7 @@ export const HeaderA: React.FC = () => {
                 </LinkA>
               </li>
               <li>
-                <LinkA>
+                <LinkA href="/sign?d=up">
                   <DescButton
                     icon={<SignUpIcon />}
                     title="Sign Up"
