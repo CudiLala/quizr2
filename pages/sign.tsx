@@ -3,8 +3,6 @@ import { NextPageWithLayout } from "types/app";
 import { SignInForm } from "components/Forms";
 import Box from "components/Boxes";
 import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
-import { URL } from "url";
 
 const SignInPage: NextPageWithLayout = () => {
   const [form, setForm] = useState("signIn");
