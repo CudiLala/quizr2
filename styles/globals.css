@@ -45,9 +45,14 @@ a {
 }
 button {
   cursor: pointer;
+  font-family: inherit;
 }
 input {
   font-size: inherit;
+}
+input::placeholder {
+  color: var(--color-light-b);
+  font-size: 0.9rem;
 }
 
 nav li {
@@ -61,6 +66,7 @@ nav li {
   --color-light-c: hsl(210, 43%, 90%);
   --color-light-d: hsl(210, 43%, 95%);
   --color-orange: hsl(39, 100%, 50%);
+  --color-green: hsl(120, 100%, 70%);
   --color-light-a-t: hsl(210, 43%, 35%, 0.4);
 
   width: 100%;
@@ -84,12 +90,12 @@ nav li {
 
 p {
   font-size: inherit;
-  word-spacing: 0.2rem;
+  /* word-spacing: 0.2rem; */
 }
 
 .t-bold {
   font-family: OpenSansBold, "Open Sans", -apple-system, BlinkMacSystemFont,
     "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   width: 100%;
-  font-weight: 800;
+  font-weight: 700;
 }

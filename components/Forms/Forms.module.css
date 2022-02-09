@@ -54,6 +54,7 @@
 }
 .QuizSearchForm .Selection .Options.Selected {
   background-color: var(--color-light-a);
+  color: var(--color-green);
 }
 
 /* --------- SIGNIN FORM ------------ */
@@ -69,6 +70,8 @@
 }
 .SignInForm .InputBox {
   display: flex;
+  position: relative;
+  align-items: center;
 }
 .SignInForm .InputBox input {
   display: flex;
@@ -91,6 +94,21 @@
 .SignInForm .InputBox input:hover {
   color: currentColor;
   border: 2px solid var(--color-light-b);
+}
+.SignInForm .InputBox .EyeIconBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  width: 1.5rem;
+  height: 1.5rem;
+  right: 0.5rem;
+  cursor: pointer;
+  color: var(--color-light-b);
+  transition: all 200ms linear;
+}
+.SignInForm .InputBox .EyeIconBox:hover {
+  color: var(--color-light-c);
 }
 .SignInForm .Link {
   color: var(--color-light-b);
