@@ -1,6 +1,17 @@
 import { SignUpError } from "Errors";
 import User from "database/models/User";
 import UserDraft from "database/models/User/draft";
+import bcrypt from "bcrypt";
+
+export function validateSignUpForPost(user: any) {
+  if (!user.password)
+    throw new SignUpError(
+      "password",
+      "Sorry, no password was given while creating user"
+    );
+  const { username, email, password, profilePicture } = user;
+  return { username, email, password, profilePicture };
+}
 
 export async function validateSignUpDraftForPost(body: any, userId: string) {
   const { username, email, password, confirmPassword, profilePicture } = body;
@@ -10,7 +21,12 @@ export async function validateSignUpDraftForPost(body: any, userId: string) {
   if (email) await validateEmail(email, userId);
   else throw new SignUpError("email", "Please an email is required");
 
-  if (password) validatePassword(password, confirmPassword);
+  if (password) {
+    validatePassword(password, confirmPassword);
+    body.password = await bcrypt.hash(password, 10);
+    delete body.confirmPassword;
+  }
+
   if (profilePicture) validateProfilePicture(profilePicture);
 }
 
@@ -18,7 +34,11 @@ export async function validateSignUpDraftForUpdate(body: any, userId: string) {
   const { username, email, password, confirmPassword, profilePicture } = body;
   if (username) await validateUsername(username, userId);
   if (email) await validateEmail(email, userId);
-  if (password) validatePassword(password, confirmPassword);
+  if (password) {
+    validatePassword(password, confirmPassword);
+    body.password = await bcrypt.hash(password, 10);
+    delete body.confirmPassword;
+  }
   if (profilePicture) validateProfilePicture(profilePicture);
 }
 
@@ -42,23 +62,6 @@ export async function validateUsername(username: string, userId: string) {
       "username",
       "Sorry, this username has already been taken"
     );
-  const user = await UserDraft.findOne({
-    username: { $regex: new RegExp(`^${modifyForRegex(username)}$`, "i") },
-  });
-  if (user) {
-    if (new Date(Date.now() + 86400000) > user.createdAt) {
-      await UserDraft.deleteMany({ username });
-      throw new SignUpError(
-        "username",
-        "Sorry, this username has already been taken"
-      );
-    }
-    if (user._id !== userId)
-      throw new SignUpError(
-        "username",
-        "Sorry, this username has already been taken"
-      );
-  }
 }
 
 export async function validateEmail(email: string, userId: string) {
@@ -71,30 +74,13 @@ export async function validateEmail(email: string, userId: string) {
   if (!isValid.value) throw new SignUpError("email", isValid.message);
   if (
     await User.findOne({
-      username: { $regex: new RegExp(`^${modifyForRegex(email)}$`, "i") },
+      email: { $regex: new RegExp(`^${modifyForRegex(email)}$`, "i") },
     })
   )
     throw new SignUpError(
       "email",
       "Sorry, a user with this email already exist"
     );
-  const user = await UserDraft.findOne({
-    email: { $regex: new RegExp(`^${modifyForRegex(email)}$`, "i") },
-  });
-  if (user) {
-    if (new Date(Date.now() + 86400000) > user.createdAt) {
-      await UserDraft.deleteMany({ email });
-      throw new SignUpError(
-        "email",
-        "Sorry, a user with this email already exist"
-      );
-    }
-    if (user._id !== userId)
-      throw new SignUpError(
-        "email",
-        "Sorry, a user with this email already exist"
-      );
-  }
 }
 
 export function validatePassword(password: string, confirmPassword: string) {

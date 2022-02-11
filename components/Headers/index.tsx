@@ -79,7 +79,7 @@ export const HeaderA: React.FC = () => {
                     <DescButton2
                       icon={<AboutIcon />}
                       title="About"
-                      colors={["hsl(200, 100%, 50%)", "hsl(200, 100%, 65%)"]}
+                      colors={["hsl(200, 100%, 50%)", "hsl(200, 100%, 70%)"]}
                     />
                   </LinkA>
                 </li>
@@ -88,7 +88,7 @@ export const HeaderA: React.FC = () => {
                     <DescButton2
                       icon={<LeaderBoardIcon />}
                       title="leaderBoards"
-                      colors={["hsl(310, 100%, 80%)", "hsl(310, 100%, 85%)"]}
+                      colors={["hsl(310, 100%, 80%)", "hsl(310, 100%, 95%)"]}
                     />
                   </LinkA>
                 </li>
@@ -97,7 +97,7 @@ export const HeaderA: React.FC = () => {
                     <DescButton2
                       icon={<SignInIcon />}
                       title="Sign In"
-                      colors={["hsl(39, 100%, 50%)", "hsl(39, 100%, 60%)"]}
+                      colors={["hsl(39, 100%, 50%)", "hsl(39, 100%, 70%)"]}
                     />
                   </LinkA>
                 </li>
@@ -106,7 +106,7 @@ export const HeaderA: React.FC = () => {
                     <DescButton2
                       icon={<SignUpIcon />}
                       title="Sign Up"
-                      colors={["hsl(120, 100%, 50%)", "hsl(120, 100%, 70%)"]}
+                      colors={["hsl(120, 100%, 50%)", "hsl(120, 100%, 75%)"]}
                     />
                   </LinkA>
                 </li>

@@ -6,6 +6,7 @@ import {
 } from "validators";
 import connectDB from "database";
 import Cookies from "cookies";
+import { SignUpError } from "Errors";
 connectDB();
 
 export default async function handler(
@@ -23,6 +24,7 @@ export default async function handler(
       for (let key in req.body) {
         body[key] = req.body[key].toString().trim();
       }
+
       await validateSignUpDraftForPost(body, userId);
       const user = await UserDraft.create(body);
       Cookie.set("user", user._id, {
@@ -30,11 +32,16 @@ export default async function handler(
         sameSite: "lax",
         expires: new Date(Date.now() + 86400000),
       });
+
       return res
         .status(200)
         .json({ success: true, id: user._id, username: user.username });
     } catch (error: any) {
       console.log(error);
+      if (error.code == 11000)
+        error = { name: "", message: "username/email is already taken" };
+      if (!error.message)
+        error = { name: "", message: "An unexpected error occured" };
       return res.status(500).json({ success: false, error });
     }
   }
@@ -42,17 +49,27 @@ export default async function handler(
     try {
       const body: any = {};
       const userId = Cookie.get("user", { signed: true }) ?? "";
-      if (!userId) throw "No user specified";
+      if (!userId)
+        throw new SignUpError("", "No user specified, please recreate account");
       for (let key in req.body) {
         body[key] = req.body[key].toString().trim();
       }
+
       await validateSignUpDraftForUpdate(body, userId);
-      const user = await UserDraft.findByIdAndUpdate(userId, body);
-      return res
-        .status(200)
-        .json({ success: true, id: user._id, username: user.username });
-    } catch (error) {
+      const user = await UserDraft.findByIdAndUpdate(userId, body, {
+        returnDocument: "after",
+        runValidators: true,
+      });
+
+      if (user)
+        return res
+          .status(200)
+          .json({ success: true, id: user._id, username: user.username });
+      throw new SignUpError("", "No user specified, please recreate account");
+    } catch (error: any) {
       console.log(error);
+      if (!error.message)
+        error = { name: "", message: "An unexpected error occured" };
       return res.status(500).json({ success: false, error });
     }
   }

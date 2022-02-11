@@ -50,6 +50,7 @@
   visibility: hidden;
   opacity: 0;
   transition: opacity 500ms linear;
+  z-index: 10;
 }
 
 .MenuContainer {
@@ -58,6 +59,7 @@
   padding: 0.5rem 1rem;
   position: relative;
   cursor: pointer;
+  z-index: 10;
 }
 .MenuContainer:focus {
   outline: none;
