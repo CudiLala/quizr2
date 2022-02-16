@@ -23,6 +23,7 @@ const UserSchema = new mongoose.Schema({
   },
   password: { type: String, required: true },
   profilePicture: { type: String, default: ut_GenerateFace },
+  isAdmin: Boolean,
   createdAt: { type: Date, immutable: true, default: () => Date.now() },
 });
 

@@ -1,13 +1,7 @@
 import { NextApiHandler, NextApiRequest, NextApiResponse } from "next";
 
-type ErrorFn = (
-  error: any,
-  req?: NextApiRequest,
-  res?: NextApiResponse
-) => void;
-
 export default class Handler {
-  runError: ErrorFn;
+  runError: (error: any, req?: NextApiRequest, res?: NextApiResponse) => void;
   get: NextApiHandler;
   post: NextApiHandler;
   put: NextApiHandler;
@@ -16,7 +10,13 @@ export default class Handler {
   middlewares: NextApiHandler[];
 
   constructor(
-    arg: { onError: ErrorFn } = {
+    arg: {
+      onError: (
+        error: any,
+        req?: NextApiRequest,
+        res?: NextApiResponse
+      ) => void;
+    } = {
       onError: function (error, req, res) {
         console.log(error);
         return res?.status(500).json({

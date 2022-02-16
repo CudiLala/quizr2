@@ -51,8 +51,6 @@ const AppWrapper: React.FC = ({ children }) => {
     })();
   }, [login]);
 
-  console.log(user);
-
   return (
     <div id="body">
       <UserContext.Provider value={user}>

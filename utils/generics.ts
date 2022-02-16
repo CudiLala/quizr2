@@ -49,7 +49,7 @@ export function ut_GenerateFace() {
   }
 
   const seed = Math.floor(Math.random() * 1000);
-  const query = `eyes[]=${chooseEyes()}&eyebrow[]=${chooseEyeBrow()}&mouth[]=${chooseMouth()}&top[]b=${chooseTop()}&facialHairChance=0&b=${chooseBg()}`;
+  const query = `eyes[]=${chooseEyes()}&eyebrow[]=${chooseEyeBrow()}&mouth[]=${chooseMouth()}&top[]=${chooseTop()}&facialHairChance=0&b=${chooseBg()}`;
 
   return `https://avatars.dicebear.com/api/avataaars/${seed}.svg?${query}`;
 }

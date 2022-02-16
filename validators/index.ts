@@ -20,35 +20,6 @@ export async function validateSignUpForPost(body: any) {
   } else throw new SignUpError("password", "Please, a password is required");
 }
 
-// export async function validateSignUpDraftForPost(body: any, userId: string) {
-//   const { username, email, password, confirmPassword, profilePicture } = body;
-//   if (username) await validateUsername(username, userId);
-//   else throw new SignUpError("username", "Please a username is required");
-
-//   if (email) await validateEmail(email, userId);
-//   else throw new SignUpError("email", "Please an email is required");
-
-//   if (password) {
-//     validatePassword(password, confirmPassword);
-//     body.password = await bcrypt.hash(password, 10);
-//     delete body.confirmPassword;
-//   }
-
-//   if (profilePicture) validateProfilePicture(profilePicture);
-// }
-
-// export async function validateSignUpDraftForUpdate(body: any, userId: string) {
-//   const { username, email, password, confirmPassword, profilePicture } = body;
-//   if (username) await validateUsername(username, userId);
-//   if (email) await validateEmail(email, userId);
-//   if (password) {
-//     validatePassword(password, confirmPassword);
-//     body.password = await bcrypt.hash(password, 10);
-//     delete body.confirmPassword;
-//   }
-//   if (profilePicture) validateProfilePicture(profilePicture);
-// }
-
 export async function validateUsername(username: string) {
   if (username.length < 1)
     throw new SignUpError(
@@ -65,15 +36,6 @@ export async function validateUsername(username: string) {
       "username",
       "Sorry, a username cannot contain special symbols except periods, underscore, !, @, #, $, %, *, ' or &`,"
     );
-  // if (
-  //   await User.findOne({
-  //     username: { $regex: new RegExp(`^${modifyForRegex(username)}$`, "i") },
-  //   })
-  // )
-  //   throw new SignUpError(
-  //     "username",
-  //     "Sorry, this username has already been taken"
-  //   );
 }
 
 export async function validateEmail(email: string) {
@@ -89,15 +51,6 @@ export async function validateEmail(email: string) {
     );
   const isValid = isAValidEmailType(email);
   if (!isValid.value) throw new SignUpError("email", isValid.message);
-  // if (
-  //   await User.findOne({
-  //     email: { $regex: new RegExp(`^${modifyForRegex(email)}$`, "i") },
-  //   })
-  // )
-  //   throw new SignUpError(
-  //     "email",
-  //     "Sorry, a user with this email already exist"
-  //   );
 }
 
 export function validatePassword(password: string, confirmPassword: string) {

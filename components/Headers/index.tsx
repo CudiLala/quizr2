@@ -13,7 +13,6 @@ import {
 import { DescButton, DescButton2 } from "components/PseudoButtons";
 import { UserContext } from "components/App/AppWrapper";
 import Image from "next/image";
-import Link from "next/link";
 import Box from "components/Boxes";
 
 export const HeaderA: React.FC = () => {
@@ -27,7 +26,6 @@ export const HeaderA: React.FC = () => {
     window.addEventListener("resize", resizeHandler);
     return () => window.removeEventListener("resize", resizeHandler);
   });
-  console.log(user);
   return (
     <header className={styles.HeaderA}>
       <div className={`content-width ${styles.Marger}`}>
@@ -81,25 +79,23 @@ export const HeaderA: React.FC = () => {
                   <span className={styles.ProfilePictureContainer}>
                     <span className={styles.ProfilePictureBox}>
                       {user != "pending" && (
-                        <Link href={`/user/${user.username}`}>
-                          <a>
-                            <Image
-                              src={`${user.profilePicture}&scale=110&translateY=10`}
-                              alt="profile picture"
-                              width="100%"
-                              height="100%"
-                              title="profile picture"
-                              className={styles.Image}
-                            />
-                          </a>
-                        </Link>
+                        <LinkA href={`/user/${user.username}`}>
+                          <Image
+                            src={`${user.profilePicture}&scale=110&translateY=10`}
+                            alt="profile picture"
+                            width="100%"
+                            height="100%"
+                            title="profile picture"
+                            className={styles.Image}
+                          />
+                        </LinkA>
                       )}
                     </span>
                     {user != "pending" && (
                       <nav className={styles.NavB}>
                         <ul>
                           <li>
-                            <LinkA>
+                            <LinkA href={`/user/${user.username}`}>
                               <DescButton2
                                 icon={<ProfileIcon />}
                                 title="Profile"
@@ -136,27 +132,21 @@ export const HeaderA: React.FC = () => {
               <span className={styles.ProfilePictureContainer}>
                 <span className={styles.ProfilePictureBox}>
                   {user != "pending" && (
-                    <>
-                      <Link href={`user/${user.username}`}>
-                        <a>
-                          <Image
-                            src={`${user.profilePicture}&scale=110&translateY=10`}
-                            alt="profile picture"
-                            width="100%"
-                            height="100%"
-                            title="profile picture"
-                            className={styles.Image}
-                          />
-                        </a>
-                      </Link>
-                    </>
+                    <Image
+                      src={`${user.profilePicture}&scale=110&translateY=10`}
+                      alt="profile picture"
+                      width="100%"
+                      height="100%"
+                      title="profile picture"
+                      className={styles.Image}
+                    />
                   )}
                 </span>
                 {user != "pending" && (
                   <nav className={styles.NavB}>
                     <ul>
                       <li>
-                        <LinkA>
+                        <LinkA href={`/user/${user.username}`}>
                           <DescButton2
                             icon={<ProfileIcon />}
                             title="Profile"
