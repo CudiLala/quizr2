@@ -1,4 +1,3 @@
-import type { NextApiResponse } from "next";
 import type { NextApiRequestX } from "types/api";
 import { mid_WithUser } from "middleware/user";
 import { ut_InitializeCookie } from "utils/cookie";
@@ -18,8 +17,6 @@ const handler = new Handler({
   },
 });
 
-export default handler.init(connectDB);
-
 handler.middlewares = [mid_WithUser];
 
 handler.get = function (req: NextApiRequestX, res) {
@@ -34,3 +31,5 @@ handler.get = function (req: NextApiRequestX, res) {
     return res.json({ success: true, user: req.user });
   } else throw new Error("No user found");
 };
+
+export default handler.init(connectDB);

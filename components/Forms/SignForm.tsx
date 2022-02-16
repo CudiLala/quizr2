@@ -109,8 +109,9 @@ export const SignUpForm: React.FC = () => {
     ev.preventDefault();
     setMsg({ type: "normal", value: "Loading..." });
 
-    //adding to userDraft
-    const { data } = await postFetcher("/api/sign_up/draft", {
+    //Registering
+    setMsg({ type: "normal", value: "Registering..." });
+    const { data } = await postFetcher("api/sign_up", {
       username: username.current?.value,
       email: email.current?.value,
       password: password.current?.value,
@@ -119,13 +120,6 @@ export const SignUpForm: React.FC = () => {
     if (!data)
       return runError({ name: "", message: "An unknown error occured" });
     if (!data.success) return runError(data.error);
-
-    //moving from userDraft to user
-    setMsg({ type: "normal", value: "Registering..." });
-    const { data: regData } = await postFetcher("api/sign_up", {});
-    if (!regData)
-      return runError({ name: "", message: "An unknown error occured" });
-    if (!regData.success) return runError(regData.error);
     setMsg({ type: "normal", value: "Registration successful. Logging in..." });
 
     //logging in

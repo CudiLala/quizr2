@@ -81,7 +81,7 @@ export const HeaderA: React.FC = () => {
                   <span className={styles.ProfilePictureContainer}>
                     <span className={styles.ProfilePictureBox}>
                       {user != "pending" && (
-                        <Link href={`user/${user.username}`}>
+                        <Link href={`/user/${user.username}`}>
                           <a>
                             <Image
                               src={`${user.profilePicture}&scale=110&translateY=10`}
@@ -111,7 +111,7 @@ export const HeaderA: React.FC = () => {
                             </LinkA>
                           </li>
                           <li>
-                            <LinkA href="sign?d=out">
+                            <LinkA href="/sign?d=out">
                               <DescButton2
                                 icon={<SignOutIcon />}
                                 title="Sign Out"
