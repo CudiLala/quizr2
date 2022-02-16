@@ -8,8 +8,11 @@ const handler = new Handler({
   onError: function (error, req, res) {
     console.log(error);
     if (!req || !res) return; //avoid ts errors
+
+    //delete login cookie
     const Cookie = ut_InitializeCookie(req, res, true);
-    Cookie.set("login", "", { expires: new Date(Date.now() - 86400000) }); //delete cookie
+    Cookie.set("login", "", { expires: new Date(Date.now() - 86400000) });
+
     return res.status(500).json({
       success: false,
       error: { name: error.name ?? "", message: error.message ?? "" },
