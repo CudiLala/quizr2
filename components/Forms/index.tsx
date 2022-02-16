@@ -35,6 +35,7 @@ export const Inputr: React.FC<InputrProps> = ({
           type={type}
           name={name}
           id={id}
+          required
           placeholder={placeholder}
           {...passProps}
         />
@@ -59,6 +60,7 @@ export const PasswordInputr: React.FC<PasswordInputrProps> = ({
           type={visible ? "text" : "password"}
           name={name}
           id={id}
+          required
           placeholder={placeholder}
           {...passProps}
         />
@@ -80,4 +82,5 @@ export const PasswordInputr: React.FC<PasswordInputrProps> = ({
 };
 
 export { default as QuizSearchForm } from "./QuizSearchForm";
-export { default as SignInForm } from "./SignInForm";
+export { SignInForm } from "./SignForm";
+export { SignUpForm } from "./SignForm";

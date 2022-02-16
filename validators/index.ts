@@ -2,6 +2,8 @@ import { SignUpError } from "Errors";
 import User from "database/models/User";
 import UserDraft from "database/models/User/draft";
 import bcrypt from "bcrypt";
+import connectDB from "database";
+connectDB();
 
 export function validateSignUpForPost(user: any) {
   if (!user.password)
@@ -43,6 +45,11 @@ export async function validateSignUpDraftForUpdate(body: any, userId: string) {
 }
 
 export async function validateUsername(username: string, userId: string) {
+  if (username.length < 1)
+    throw new SignUpError(
+      "username",
+      "Sorry a username must contain at least one character"
+    );
   if (username.length > 32)
     throw new SignUpError(
       "username",
@@ -53,10 +60,14 @@ export async function validateUsername(username: string, userId: string) {
       "username",
       "Sorry, a username cannot contain special symbols except periods, underscore, !, @, #, $, %, *, ' or &`,"
     );
+  const user = await UserDraft.findOne({
+    username: { $regex: new RegExp(`^${modifyForRegex(username)}$`, "i") },
+  });
   if (
-    await User.findOne({
+    (await User.findOne({
       username: { $regex: new RegExp(`^${modifyForRegex(username)}$`, "i") },
-    })
+    })) ||
+    (user && user._id != userId)
   )
     throw new SignUpError(
       "username",
@@ -65,6 +76,11 @@ export async function validateUsername(username: string, userId: string) {
 }
 
 export async function validateEmail(email: string, userId: string) {
+  if (email.length < 1)
+    throw new SignUpError(
+      "email",
+      "Sorry an email must contain at least one character"
+    );
   if (email.length > 64)
     throw new SignUpError(
       "email",
@@ -72,10 +88,14 @@ export async function validateEmail(email: string, userId: string) {
     );
   const isValid = isAValidEmailType(email);
   if (!isValid.value) throw new SignUpError("email", isValid.message);
+  const user = await UserDraft.findOne({
+    email: { $regex: new RegExp(`^${modifyForRegex(email)}$`, "i") },
+  });
   if (
-    await User.findOne({
+    (await User.findOne({
       email: { $regex: new RegExp(`^${modifyForRegex(email)}$`, "i") },
-    })
+    })) ||
+    (user && user._id != userId)
   )
     throw new SignUpError(
       "email",
@@ -84,6 +104,12 @@ export async function validateEmail(email: string, userId: string) {
 }
 
 export function validatePassword(password: string, confirmPassword: string) {
+  if (password.length < 3) {
+    throw new SignUpError(
+      "password",
+      "Sorry a password must contain at least three characters"
+    );
+  }
   if (password.length > 32)
     throw new SignUpError(
       "password",

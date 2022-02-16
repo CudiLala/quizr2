@@ -24,7 +24,7 @@
   display: flex;
   justify-content: flex-start;
   height: 100%;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem;
 }
 
 .Nav a,
@@ -38,25 +38,13 @@
 }
 
 .Nav li {
-  padding: 0 1rem;
-}
-
-.NavB {
-  position: absolute;
-  top: 3.25rem;
-  right: 0;
-  display: flex;
-  padding: 0.5rem 1rem;
-  visibility: hidden;
-  opacity: 0;
-  transition: opacity 500ms linear;
-  z-index: 10;
+  padding: 0 0.5rem;
 }
 
 .MenuContainer {
   display: flex;
   align-items: center;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem;
   position: relative;
   cursor: pointer;
   z-index: 10;
@@ -85,6 +73,18 @@
   opacity: 1;
 }
 
+.NavB {
+  position: absolute;
+  top: 3.25rem;
+  right: 0;
+  display: flex;
+  padding: 0.5rem;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 500ms linear;
+  z-index: 10;
+}
+
 .NavB ul {
   display: flex;
   flex-direction: column;
@@ -93,6 +93,7 @@
   border-radius: 0.5rem;
   box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
   position: relative;
+  align-items: flex-start;
 }
 .NavB ul::after {
   content: " ";
@@ -112,4 +113,29 @@
   height: 3rem;
   display: flex;
   align-items: center;
+}
+
+.ProfilePictureContainer {
+  padding: 0.5rem;
+  position: relative;
+  z-index: 9;
+}
+
+.ProfilePictureBox {
+  display: flex;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background-color: var(--color-light-a);
+  padding: 0.25rem;
+  cursor: pointer;
+}
+.ProfilePictureContainer:hover .NavB,
+.ProfilePictureContainer:focus .NavB {
+  visibility: visible;
+  opacity: 1;
+}
+
+.ProfilePictureBox .Image {
+  border-radius: 50%;
 }

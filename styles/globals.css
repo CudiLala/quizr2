@@ -22,8 +22,6 @@
   -webkit-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
-  -webkit-user-select: none;
-  user-select: none;
   text-size-adjust: 100%;
   font-size: 1rem;
 }

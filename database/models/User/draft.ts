@@ -14,15 +14,20 @@ const UserDraftSchema = new mongoose.Schema({
     type: String,
     required: true,
     trim: true,
+    lowercase: true,
     index: {
       unique: true,
       collation: { locale: "en", strength: 2 },
     },
   },
-  password: String,
-  confirmPassword: String,
+  password: { type: String },
   profilePicture: { type: String, default: generateFace },
-  createdAt: { type: Date, default: () => Date.now() },
+  createdAt: {
+    type: Date,
+    immutable: true,
+    select: false,
+    default: () => Date.now(),
+  },
 });
 
 UserDraftSchema.index({ createdAt: 1 }, { expireAfterSeconds: 24 * 60 * 60 });
@@ -64,8 +69,21 @@ function generateFace() {
     return "straight01";
   }
 
+  function chooseBg() {
+    let color1 = Math.floor(Math.random() * 256).toString(16);
+    let color2 = Math.floor(Math.random() * 256).toString(16);
+    let color3 = Math.floor(Math.random() * 256).toString(16);
+
+    //ex 05, 0a, 00...
+    if (color1.length < 2) color1 = `0${color1}`;
+    if (color2.length < 2) color2 = `0${color2}`;
+    if (color3.length < 2) color3 = `0${color3}`;
+
+    return `%23${color1}${color2}${color3}`;
+  }
+
   const seed = Math.floor(Math.random() * 1000);
-  const query = `eyes[]=${chooseEyes()}&eyebrow[]=${chooseEyeBrow()}&mouth[]=${chooseMouth()}&top[]=${chooseTop()}&facialHairChance=0`;
+  const query = `eyes[]=${chooseEyes()}&eyebrow[]=${chooseEyeBrow()}&mouth[]=${chooseMouth()}&top[]b=${chooseTop()}&facialHairChance=0&b=${chooseBg()}`;
 
   return `https://avatars.dicebear.com/api/avataaars/${seed}.svg?${query}`;
 }

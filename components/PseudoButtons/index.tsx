@@ -65,7 +65,10 @@ export const DescButton2: React.FC<DescProps> = ({
       >
         {icon}
       </span>
-      <span style={{ color: color }} className={styles.Title}>
+      <span
+        style={{ color: color, whiteSpace: "nowrap" }}
+        className={styles.Title}
+      >
         {title.toLowerCase()}
       </span>
     </span>

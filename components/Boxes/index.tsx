@@ -3,11 +3,13 @@ import { DefaultProps } from "types/app";
 
 interface Props extends DefaultProps {
   size?: [number, number?, number?, number?];
+  column?: boolean;
 }
 
 const Box: React.FC<Props> = ({
   children,
   size = [8],
+  column,
   _className = "",
   _style = {},
   passProps = {},
@@ -17,6 +19,7 @@ const Box: React.FC<Props> = ({
     size.forEach((num, idx) => {
       Style.padding = Style.padding?.toString() + `${num! * 0.125}rem `;
     });
+  if (column) Style.flexDirection === "column";
   return (
     <div
       className={`${_className}`}

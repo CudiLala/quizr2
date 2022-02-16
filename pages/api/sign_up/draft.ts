@@ -5,17 +5,15 @@ import {
   validateSignUpDraftForUpdate,
 } from "validators";
 import connectDB from "database";
-import Cookies from "cookies";
 import { SignUpError } from "Errors";
-connectDB();
+import { ut_InitializeCookie } from "utils/cookie";
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const key = process.env.COOKIE_KEYS;
-  const keys = [`${key ? key : "any key"}`];
-  const Cookie = new Cookies(req, res, { keys });
+  await connectDB();
+  const Cookie = ut_InitializeCookie(req, res, true);
 
   if (req.method === "POST") {
     try {
@@ -29,7 +27,7 @@ export default async function handler(
       const user = await UserDraft.create(body);
       Cookie.set("user", user._id, {
         signed: true,
-        sameSite: "lax",
+        sameSite: "strict",
         expires: new Date(Date.now() + 86400000),
       });
 
@@ -58,7 +56,6 @@ export default async function handler(
       await validateSignUpDraftForUpdate(body, userId);
       const user = await UserDraft.findByIdAndUpdate(userId, body, {
         returnDocument: "after",
-        runValidators: true,
       });
 
       if (user)
@@ -70,7 +67,10 @@ export default async function handler(
       console.log(error);
       if (!error.message)
         error = { name: "", message: "An unexpected error occured" };
-      return res.status(500).json({ success: false, error });
+      return res.status(500).json({
+        success: false,
+        error: { name: error.name ?? "", message: error.message ?? "" },
+      });
     }
   }
 }
