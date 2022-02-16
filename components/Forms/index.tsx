@@ -28,7 +28,7 @@ export const Inputr: React.FC<InputrProps> = ({
   label,
 }) => {
   return (
-    <Box size={[2, 0]} _className={`${styles.InputContainer}`}>
+    <Box size={[2, 0]} _className={`${styles.InputContainer}`} column>
       <label htmlFor={id}>{label}:</label>
       <Box size={[0]} _className={`${styles.InputBox}`}>
         <input
@@ -53,7 +53,7 @@ export const PasswordInputr: React.FC<PasswordInputrProps> = ({
 }) => {
   const [visible, setVisible] = useState<boolean>(false);
   return (
-    <Box size={[2, 0]} _className={`${styles.InputContainer}`}>
+    <Box size={[2, 0]} _className={`${styles.InputContainer}`} column>
       <label htmlFor={id}>{label}:</label>
       <Box size={[0]} _className={`${styles.InputBox}`}>
         <input

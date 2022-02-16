@@ -6,6 +6,7 @@ import styles from "styles/User.module.css";
 import React, { useContext, useEffect, useState } from "react";
 import { getFetcher } from "utils/fetchers";
 import { UserContext as MeContext } from "components/App/AppWrapper";
+import Image from "next/image";
 
 const UserPage: NextPageWithLayout = () => {
   return <Box>Hi, User</Box>;
@@ -30,8 +31,8 @@ const User: React.FC = ({ children }) => {
   useEffect(() => {
     (async function () {
       if (!username) return;
-      const { data: user } = await getFetcher(`/api/user/${username}`);
-      setUser(user);
+      const { data } = await getFetcher(`/api/user/${username}`);
+      if (data?.success) setUser(data.user);
     })();
   }, [username]);
   /* eslint-enable */
@@ -39,15 +40,34 @@ const User: React.FC = ({ children }) => {
   return (
     <div className="content-width">
       <UserContext.Provider value={user}>
-        <UserHero username={username} />
+        <Box _className={styles.UserHeroBox}>
+          <UserHero />
+        </Box>
         {children}
       </UserContext.Provider>
     </div>
   );
 };
 
-const UserHero: React.FC<{ username: any }> = ({ username }) => {
-  return <></>;
+const UserHero: React.FC = () => {
+  const user = useContext(UserContext);
+  return (
+    <div className={`${styles.UserHero}`}>
+      <div className={styles.Avatar}>
+        <span className={styles.ImageBox}>
+          {user?.profilePicture && (
+            <Image
+              src={user.profilePicture}
+              layout="fill"
+              alt="profile picture"
+              className={styles.Image}
+            />
+          )}
+        </span>
+      </div>
+      <p className={styles.Username}>{user?.username && `@${user.username}`}</p>
+    </div>
+  );
 };
 
 export default UserPage;

@@ -29,7 +29,7 @@ const SignInPage: NextPageWithLayout = () => {
 
   return (
     <section style={{ width: "100%", height: "100%" }}>
-      <Box _className="content-width">
+      <Box _className="content-width" column>
         {form === "signIn" && <SignInForm />}
         {form === "signUp" && <SignUpForm />}
         {form === "signOut" && <SignOutComponent />}
@@ -84,6 +84,7 @@ const SignOutComponent: React.FC = () => {
       <p
         style={{
           textAlign: "center",
+          fontSize: "1.25rem",
           color: `${
             msg.type === "error" ? "var(--color-orange)" : "var(--color-green)"
           }`,

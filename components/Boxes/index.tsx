@@ -14,12 +14,12 @@ const Box: React.FC<Props> = ({
   _style = {},
   passProps = {},
 }) => {
-  const Style: React.CSSProperties = { padding: "" };
+  const Style: React.CSSProperties = { padding: "", display: "flex" };
   if (size)
     size.forEach((num, idx) => {
       Style.padding = Style.padding?.toString() + `${num! * 0.125}rem `;
     });
-  if (column) Style.flexDirection === "column";
+  if (column) Style.flexDirection = "column";
   return (
     <div
       className={`${_className}`}

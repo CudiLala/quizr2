@@ -16,13 +16,13 @@ interface Selection {
 const QuizSearchForm: React.FC = () => {
   return (
     <form className={styles.QuizSearchForm} autoComplete="off">
-      <Box _className={styles.InputContainer} size={[4, 0]}>
+      <Box _className={styles.InputContainer} size={[4, 0]} column>
         <label>Search:</label>
         <Box _className={styles.InputBox} size={[1, 0, 0]}>
           <input type="text" />
         </Box>
       </Box>
-      <Box size={[2, 0, 4]} _className={styles.InputContainer}>
+      <Box size={[2, 0, 4]} _className={styles.InputContainer} column>
         <label>Sort By:</label>
         <Selection>
           <Options name="popularity">Popularity</Options>

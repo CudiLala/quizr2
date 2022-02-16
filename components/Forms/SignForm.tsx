@@ -50,7 +50,7 @@ export const SignInForm: React.FC = () => {
       onSubmit={loginUser}
     >
       <legend className="t-bold">Sign In</legend>
-      <Box size={[2, 0]}>
+      <Box size={[2, 0]} column>
         <p
           style={{
             fontSize: "0.9rem",
@@ -64,7 +64,7 @@ export const SignInForm: React.FC = () => {
           {msg.value}
         </p>
       </Box>
-      <Box size={[2, 0]}>
+      <Box size={[2, 0]} column>
         <Inputr
           type="text"
           name="user"
@@ -151,7 +151,7 @@ export const SignUpForm: React.FC = () => {
       onSubmit={registerUser}
     >
       <legend className="t-bold">Sign Up</legend>
-      <Box size={[2, 0]}>
+      <Box size={[2, 0]} column>
         <p
           style={{
             fontSize: "0.9rem",
@@ -165,7 +165,7 @@ export const SignUpForm: React.FC = () => {
           {msg.value}
         </p>
       </Box>
-      <Box size={[2, 0]}>
+      <Box size={[2, 0]} column>
         <Inputr
           type="text"
           name="username"
