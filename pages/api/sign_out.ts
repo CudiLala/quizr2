@@ -10,7 +10,7 @@ const handler = new Handler();
 handler.middlewares = [mid_WithUser];
 
 handler.delete = async function (req: NextApiRequestX, res) {
-  const Cookie = ut_InitializeCookie(req, res, true);
+  const Cookie = ut_InitializeCookie(req, res);
   if (!req.user) throw new Error("It seems you aren't signed in yet");
 
   await Session.deleteOne({ _id: req.ssId }); //delete session

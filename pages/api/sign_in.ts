@@ -10,7 +10,7 @@ import Handler from "handler";
 const handler = new Handler();
 
 handler.post = async function (req, res) {
-  const Cookie = ut_InitializeCookie(req, res, true);
+  const Cookie = ut_InitializeCookie(req, res);
 
   const body: any = {};
   for (let key in req.body) {
@@ -43,7 +43,6 @@ handler.post = async function (req, res) {
   //set login and ssId cookies
   const expirationDate = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
   Cookie.set("ssId", session._id, {
-    signed: true,
     sameSite: "strict",
     expires: expirationDate,
   });

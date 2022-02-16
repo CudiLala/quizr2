@@ -7,8 +7,8 @@ import { ut_InitializeCookie } from "utils/cookie";
 if (User) console.log(""); //to make sure User is loaded (used in populating user | might be cut off from compile)
 
 export function mid_WithSSID(req: NextApiRequestX, res: NextApiResponse) {
-  const Cookie = ut_InitializeCookie(req, res, true); //initialize cookie
-  const ssId = Cookie.get("ssId", { signed: true }) ?? null;
+  const Cookie = ut_InitializeCookie(req, res); //initialize cookie
+  const ssId = Cookie.get("ssId") ?? null;
   req.ssId = ssId;
 }
 

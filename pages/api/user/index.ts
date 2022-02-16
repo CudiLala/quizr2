@@ -10,7 +10,7 @@ const handler = new Handler({
     if (!req || !res) return; //avoid ts errors
 
     //delete login cookie
-    const Cookie = ut_InitializeCookie(req, res, true);
+    const Cookie = ut_InitializeCookie(req, res);
     Cookie.set("login", "", { expires: new Date(Date.now() - 86400000) });
 
     return res.status(500).json({
@@ -23,7 +23,7 @@ const handler = new Handler({
 handler.middlewares = [mid_WithUser];
 
 handler.get = function (req: NextApiRequestX, res) {
-  const Cookie = ut_InitializeCookie(req, res, true);
+  const Cookie = ut_InitializeCookie(req, res);
   if (!req.ssId) throw new Error("No user session Id found");
   if (req.user) {
     Cookie.set("login", "true", {
