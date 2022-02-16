@@ -19,7 +19,7 @@ export default class Handler {
     arg: { onError: ErrorFn } = {
       onError: function (error, req, res) {
         console.log(error);
-        return res?.status(200).json({
+        return res?.status(500).json({
           success: false,
           error: {
             name: error.name ?? "",
@@ -61,7 +61,7 @@ export default class Handler {
           await this.delete(req, res);
         }
       } catch (error) {
-        this.runError(error, req, res);
+        return this.runError(error, req, res);
       }
     };
   }

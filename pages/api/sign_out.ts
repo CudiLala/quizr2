@@ -2,36 +2,11 @@ import type { NextApiHandler, NextApiResponse } from "next";
 import type { NextApiRequestX } from "types/api";
 import connectDB from "database";
 import Session from "database/models/Session";
-import User from "database/models/User";
 import { ut_InitializeCookie } from "utils/cookie";
 import Handler from "handler";
+import { mid_WithUser } from "middleware/user";
 
 const handler = new Handler();
-
-async function mid_WithSSID(req: NextApiRequestX, res: NextApiResponse) {
-  const Cookie = ut_InitializeCookie(req, res, true); //initialize cookie
-  const ssId = Cookie.get("ssId", { signed: true }) ?? null;
-  req.ssId = ssId;
-}
-async function mid_WithUser(req: NextApiRequestX, res: NextApiResponse) {
-  mid_WithSSID(req, res);
-  await User.findOne({}); //used to make sure the User model is included in the compiled js file
-  if (!req.ssId) req.user = null;
-  else {
-    const session: any = await Session.findById(req.ssId).populate(
-      "user",
-      "username profilePicture _id"
-    );
-    if (session?.user) {
-      req.user = {
-        id: session.user._id,
-        username: session.user.username,
-        profilePicture: session.user.profilePicture,
-        SSDate: session.createdAt,
-      };
-    } else req.user = null;
-  }
-}
 
 handler.middlewares = [mid_WithUser];
 
