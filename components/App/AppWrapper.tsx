@@ -32,7 +32,6 @@ const AppWrapper: React.FC = ({ children }) => {
     if (typeof window === "undefined") return null;
     const user = localStorage.getItem("user") ?? JSON.stringify({});
     if (!login.value) return null;
-    // console.log("getUserformStore>> ", JSON.parse(user));
     if (JSON.parse(user).username) return JSON.parse(user);
     return "pending";
   }

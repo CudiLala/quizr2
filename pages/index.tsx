@@ -2,6 +2,7 @@ import { NextPageWithLayout } from "types/app";
 import { LayoutA } from "components/Layout";
 import Box from "components/Boxes";
 import { QuizSearchForm } from "components/Forms";
+import { NeonDivider } from "components/Generics/Dividers";
 
 const Home: NextPageWithLayout = () => {
   return (
@@ -22,12 +23,16 @@ const Home: NextPageWithLayout = () => {
         </Box>
       </Box>
       <Box size={[4, 8]} column>
+        <NeonDivider />
         <QuizSearchForm />
+        <NeonDivider />
       </Box>
     </div>
   );
 };
 
-Home.getLayout = LayoutA;
+Home.getLayout = function ({ children }) {
+  return <LayoutA>{children}</LayoutA>;
+};
 
 export default Home;

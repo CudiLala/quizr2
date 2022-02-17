@@ -54,9 +54,8 @@ const UserHero: React.FC<{ user: any }> = ({ user }) => {
   );
 };
 
-if (typeof window === "undefined") connectDB();
-
 export async function getStaticPaths() {
+  connectDB();
   const users = await UserModel.find({});
 
   const paths = users.map((user: any) => {
@@ -68,7 +67,11 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps(context: any) {
-  const user = await UserModel.findOne({ username: context.params.username });
+  connectDB();
+  const user = await UserModel.findOne({
+    username: context.params.username,
+  }).collation({ locale: "en", strength: 2 });
+
   if (!user) return { notFound: true };
   const { username, profilePicture, _id } = user;
   return {

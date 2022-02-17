@@ -96,6 +96,8 @@ const SignOutComponent: React.FC = () => {
   );
 };
 
-SignInPage.getLayout = LayoutA;
+SignInPage.getLayout = function ({ children }) {
+  return <LayoutA>{children}</LayoutA>;
+};
 
 export default SignInPage;

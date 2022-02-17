@@ -1,7 +1,8 @@
 .HeaderA {
   height: 3.5rem;
   width: 100%;
-  border-bottom: 2px solid var(--color-light-a);
+  border-bottom: 0.2rem solid var(--color-light-a);
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
 }
 
 .Marger {
@@ -91,7 +92,7 @@
   padding: 0.25rem 1rem;
   background-color: var(--color-light-a);
   border-radius: 0.5rem;
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
   position: relative;
   align-items: flex-start;
 }
@@ -117,8 +118,12 @@
 
 .ProfilePictureContainer {
   padding: 0.5rem;
+  padding-right: 0;
   position: relative;
   z-index: 9;
+}
+.ProfilePictureContainer .NavB {
+  padding-right: 0;
 }
 
 .ProfilePictureBox {
@@ -128,6 +133,7 @@
   border-radius: 50%;
   background-color: var(--color-light-a);
   padding: 0.25rem;
+  box-shadow: 0 0 2px rgba(255, 255, 255, 0.1);
   cursor: pointer;
 }
 .ProfilePictureContainer:hover .NavB,
