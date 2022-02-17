@@ -5,52 +5,36 @@ import type { NextPageWithLayout } from "types/app";
 import styles from "styles/User.module.css";
 import React, { useContext, useEffect, useState } from "react";
 import { getFetcher } from "utils/fetchers";
-import { UserContext as MeContext } from "components/App/AppWrapper";
+import { UserContext } from "components/App/AppWrapper";
 import Image from "next/image";
+import UserModel from "database/models/User";
+import connectDB from "database";
 
-const UserPage: NextPageWithLayout = () => {
-  return <Box>Hi, User</Box>;
-};
-
-UserPage.getLayout = function ({ children }) {
+const UserPage: NextPageWithLayout<{ user: any }> = ({ user }) => {
   return (
-    <LayoutA>
-      <User>{children}</User>
-    </LayoutA>
+    <User user={user}>
+      <Box>Hi, User</Box>
+    </User>
   );
 };
 
-const UserContext = React.createContext<any>(null);
+UserPage.getLayout = function ({ children }) {
+  return <LayoutA>{children}</LayoutA>;
+};
 
-const User: React.FC = ({ children }) => {
-  const [user, setUser] = useState();
+const User: React.FC<{ user: any }> = ({ children, user }) => {
   const router = useRouter();
-  const { username } = router.query;
-
-  /* eslint-disable */
-  useEffect(() => {
-    (async function () {
-      if (!username) return;
-      const { data } = await getFetcher(`/api/user/${username}`);
-      if (data?.success) setUser(data.user);
-    })();
-  }, [username]);
-  /* eslint-enable */
-
   return (
     <div className="content-width">
-      <UserContext.Provider value={user}>
-        <Box _className={styles.UserHeroBox}>
-          <UserHero />
-        </Box>
-        {children}
-      </UserContext.Provider>
+      <Box _className={styles.UserHeroBox}>
+        <UserHero user={user} />
+      </Box>
+      {children}
     </div>
   );
 };
 
-const UserHero: React.FC = () => {
-  const user = useContext(UserContext);
+const UserHero: React.FC<{ user: any }> = ({ user }) => {
   return (
     <div className={`${styles.UserHero}`}>
       <div className={styles.Avatar}>
@@ -69,5 +53,29 @@ const UserHero: React.FC = () => {
     </div>
   );
 };
+
+if (typeof window === "undefined") connectDB();
+
+export async function getStaticPaths() {
+  const users = await UserModel.find({});
+
+  const paths = users.map((user: any) => {
+    return { params: { username: user.username } };
+  });
+
+  console.log(paths);
+  return { paths, fallback: true };
+}
+
+export async function getStaticProps(context: any) {
+  const user = await UserModel.findOne({ username: context.params.username });
+  if (!user) return { notFound: true };
+  const { username, profilePicture, _id } = user;
+  return {
+    props: {
+      user: { username, profilePicture, id: _id.toString() },
+    },
+  };
+}
 
 export default UserPage;

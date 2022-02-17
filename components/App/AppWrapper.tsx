@@ -37,8 +37,6 @@ const AppWrapper: React.FC = ({ children }) => {
     return "pending";
   }
 
-  console.log(user);
-
   useEffect(() => {
     (async () => {
       const { data } = await getFetcher("/api/user");
