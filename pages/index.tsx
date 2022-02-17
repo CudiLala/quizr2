@@ -9,13 +9,13 @@ const Home: NextPageWithLayout = () => {
     <div className="content-width">
       <Box size={[8, 8, 4]} column>
         <Box size={[2, 0]} column>
-          <p>
+          <p style={{ fontSize: "0.9rem" }}>
             Hi, Welcome to Quizr. Test your knowledge on some mind blowing facts
             you may or may not know about.
           </p>
         </Box>
         <Box size={[2, 0]} column>
-          <p>
+          <p style={{ fontSize: "0.9rem" }}>
             To get started, choose one of the following quizes below. You can
             search for quizes or sort based on category, difficulty or
             popularity. Good luck &#128077;.
