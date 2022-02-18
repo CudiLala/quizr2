@@ -161,7 +161,7 @@ export const HeaderA: React.FC = () => {
                   <nav className={styles.NavB}>
                     <ul>
                       <li>
-                        <LinkA href={`/admin`}>
+                        <LinkA href={`/user/${user.username}`}>
                           <DescButton2
                             icon={<ProfileIcon />}
                             title="Profile"
