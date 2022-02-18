@@ -35,14 +35,30 @@ export default CreateQuizPage;
 
 const CreateQuizPageComponent: React.FC = () => {
   return (
-    <Box column size={[8, 0]}>
-      <Box _className={`${styles.Group} box-width`} column>
-        <Box size={[0, 2]} _className={styles.Heading}>
-          <span className="t-bold">Quiz Details</span>
+    <>
+      <Box column size={[8, 0]}>
+        <Box _className={`${styles.Group} box-width`} column>
+          <Box size={[0, 2]} _className={styles.Heading}>
+            <span className="t-bold">Quiz Details</span>
+          </Box>
+          <Box size={[0]} _style={{ justifyContent: "flex-end" }}>
+            <span className="btn-major t-sbold-x pointer">Save Details</span>
+          </Box>
+          <CreateQuizForm />
         </Box>
-        <CreateQuizForm />
       </Box>
-    </Box>
+      <Box column size={[8, 0]}>
+        <Box _className={`${styles.Group} box-width`} column>
+          <Box size={[0, 2]} _className={styles.Heading}>
+            <span className="t-bold">Quiz Questions</span>
+          </Box>
+          <Box size={[0]} _style={{ justifyContent: "flex-end" }}>
+            <span className="btn-major t-sbold-x pointer">New Question</span>
+          </Box>
+          {/* <CreateQuizForm /> */}
+        </Box>
+      </Box>
+    </>
   );
 };
 
@@ -55,6 +71,7 @@ const CreateQuizForm: React.FC = () => {
         id="quizIntroText"
         name="quizIntroText"
         label="Introductory Text"
+        height="15rem"
       />
     </form>
   );

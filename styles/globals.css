@@ -97,7 +97,7 @@ p {
 }
 
 .btn-major {
-  padding: 0.5rem 1rem;
+  padding: 0.3rem 1rem;
   background-image: linear-gradient(
     to right,
     hsl(345, 72%, 65%),
@@ -112,6 +112,10 @@ p {
     hsl(207, 52%, 65%),
     hsl(207, 52%, 56%)
   );
+}
+
+.pointer {
+  cursor: pointer;
 }
 
 .t-bold {
