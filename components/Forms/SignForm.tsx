@@ -50,7 +50,7 @@ export const SignInForm: React.FC = () => {
       onSubmit={loginUser}
     >
       <legend className="t-bold">Sign In</legend>
-      <Box size={[2, 0]} column>
+      <Box size={[2, 0, 0]} column>
         <p
           style={{
             fontSize: "0.9rem",
@@ -155,7 +155,7 @@ export const SignUpForm: React.FC = () => {
       onSubmit={registerUser}
     >
       <legend className="t-bold">Sign Up</legend>
-      <Box size={[2, 0]} column>
+      <Box size={[2, 0, 0]} column>
         <p
           style={{
             fontSize: "0.9rem",

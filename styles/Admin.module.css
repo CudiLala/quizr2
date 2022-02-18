@@ -10,11 +10,11 @@
   position: absolute;
   top: -1rem;
   background-color: var(--color-bg);
-  transform: translateX(-0.125rem);
+  transform: translateX(-0.25rem);
 }
 
 .Group .Heading span {
   text-transform: uppercase;
-  font-size: 1.1rem;
+  font-size: 1rem;
   line-height: 1.5rem;
 }

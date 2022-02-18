@@ -35,7 +35,9 @@ const AdminPageComponent: React.FC = () => {
   return (
     <>
       <Box size={[0, 0, 4]} _style={{ justifyContent: "flex-end" }}>
-        <LinkA _className="btn-major t-sbold-x">Create Quiz</LinkA>
+        <LinkA _className="btn-major t-sbold-x" href="/admin/create">
+          Create Quiz
+        </LinkA>
       </Box>
       <Box size={[4, 0]}>
         <Box size={[8]} column _className={styles.Group}>
