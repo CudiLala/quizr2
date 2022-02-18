@@ -67,6 +67,7 @@ nav li {
   --color-light-b: hsl(210, 43%, 65%);
   --color-light-c: hsl(210, 43%, 90%);
   --color-light-d: hsl(210, 43%, 95%);
+  --color-light-orange: hsl(32, 100%, 70%);
   --color-orange: hsl(39, 100%, 50%);
   --color-green: hsl(120, 100%, 70%);
   --color-light-a-t: hsl(210, 43%, 35%, 0.4);

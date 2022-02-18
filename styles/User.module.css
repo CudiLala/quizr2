@@ -74,5 +74,31 @@
 }
 
 .UserHero .Nav a {
-  padding: 0 0.25rem;
+  padding: 0 0.5rem;
+  color: var(--color-orange);
+  position: relative;
+}
+
+.UserHero .Nav a:hover {
+  color: var(--color-light-orange);
+}
+
+.UserHero .Nav a:hover::after {
+  content: "\2022 \2022 \2022 \2022 \2022";
+  color: var(--color-light-a);
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 0;
+  line-height: 0;
+}
+
+.UserHero .Nav a.Active::after {
+  content: "\2022 \2022 \2022 \2022 \2022";
+  color: var(--color-light-b);
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 0;
+  line-height: 0;
 }

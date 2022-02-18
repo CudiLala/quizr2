@@ -57,7 +57,7 @@ const UserHero: React.FC<{ user: any }> = ({ user }) => {
         <p className={`${styles.UserXP} t-sbold`}>&#127942;500XP</p>
       </Box>
       <nav className={styles.Nav}>
-        <LinkA _className="t-sbold-x">Stats</LinkA>
+        <LinkA _className={`t-sbold-x ${styles.Active}`}>Stats</LinkA>
         <LinkA _className="t-sbold-x">Settings</LinkA>
         <LinkA _className="t-sbold-x">Dashbord</LinkA>
       </nav>
