@@ -6,6 +6,7 @@ import {
   LeaderBoardIcon,
   MenuIcon,
   ProfileIcon,
+  ShieldIcon,
   SignInIcon,
   SignOutIcon,
   SignUpIcon,
@@ -106,6 +107,20 @@ export const HeaderA: React.FC = () => {
                               />
                             </LinkA>
                           </li>
+                          {user.isAdmin && (
+                            <li>
+                              <LinkA href={`/admin`}>
+                                <DescButton2
+                                  icon={<ShieldIcon />}
+                                  title="Admin"
+                                  colors={[
+                                    "hsl(200, 100%, 50%)",
+                                    "hsl(200, 100%, 65%)",
+                                  ]}
+                                />
+                              </LinkA>
+                            </li>
+                          )}
                           <li>
                             <LinkA href="/sign?d=out">
                               <DescButton2
@@ -146,7 +161,7 @@ export const HeaderA: React.FC = () => {
                   <nav className={styles.NavB}>
                     <ul>
                       <li>
-                        <LinkA href={`/user/${user.username}`}>
+                        <LinkA href={`/admin`}>
                           <DescButton2
                             icon={<ProfileIcon />}
                             title="Profile"
@@ -157,6 +172,20 @@ export const HeaderA: React.FC = () => {
                           />
                         </LinkA>
                       </li>
+                      {user.isAdmin && (
+                        <li>
+                          <LinkA href={`/admin`}>
+                            <DescButton2
+                              icon={<ShieldIcon />}
+                              title="Admin"
+                              colors={[
+                                "hsl(200, 100%, 50%)",
+                                "hsl(200, 100%, 65%)",
+                              ]}
+                            />
+                          </LinkA>
+                        </li>
+                      )}
                       <li>
                         <LinkA href="/sign?d=out">
                           <DescButton2

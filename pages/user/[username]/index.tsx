@@ -36,6 +36,7 @@ const User: React.FC<{ user: any }> = ({ children, user }) => {
 };
 
 const UserHero: React.FC<{ user: any }> = ({ user }) => {
+  const me = useContext(UserContext);
   return (
     <div className={`${styles.UserHero}`}>
       <div className={styles.Avatar}>
@@ -58,8 +59,9 @@ const UserHero: React.FC<{ user: any }> = ({ user }) => {
       </Box>
       <nav className={styles.Nav}>
         <LinkA _className={`t-sbold-x ${styles.Active}`}>Stats</LinkA>
-        <LinkA _className="t-sbold-x">Settings</LinkA>
-        <LinkA _className="t-sbold-x">Dashbord</LinkA>
+        {me != "pending" && me?.id == user?.id && (
+          <LinkA _className="t-sbold-x">Settings</LinkA>
+        )}
       </nav>
     </div>
   );

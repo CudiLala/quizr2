@@ -2,7 +2,12 @@ import React, { useEffect, useReducer, useContext, useState } from "react";
 import Cookies from "js-cookie";
 import { getFetcher } from "utils/fetchers";
 
-type User = { username: string; profilePicture: string };
+type User = {
+  username: string;
+  profilePicture: string;
+  id: string;
+  isAdmin?: boolean;
+};
 type UserState = null | "pending" | User;
 type UserAction =
   | { type: "nullify" }

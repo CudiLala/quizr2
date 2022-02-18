@@ -96,6 +96,24 @@ p {
   /* word-spacing: 0.2rem; */
 }
 
+.btn-major {
+  padding: 0.5rem 1rem;
+  background-image: linear-gradient(
+    to right,
+    hsl(345, 72%, 65%),
+    hsl(325, 55%, 58%)
+  );
+  border-radius: 0.25rem;
+  color: white;
+}
+.btn-major:hover {
+  background-image: linear-gradient(
+    to right,
+    hsl(207, 52%, 65%),
+    hsl(207, 52%, 56%)
+  );
+}
+
 .t-bold {
   font-family: OpenSansBold, "Open Sans", -apple-system, BlinkMacSystemFont,
     "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
@@ -114,4 +132,8 @@ p {
   font-weight: 600;
   text-transform: uppercase;
   font-size: 0.95rem;
+}
+
+.t-green {
+  color: var(--color-green);
 }

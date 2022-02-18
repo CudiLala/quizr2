@@ -3,11 +3,10 @@
 }
 .UserHero {
   position: relative;
-  height: 15rem;
+  height: 13.5rem;
   width: 100%;
   margin-top: 5rem;
-  position: relative;
-  border: 0.25rem solid var(--color-light-a);
+  border: 0.2rem solid var(--color-light-a);
   border-radius: 0.25rem;
   box-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
   display: flex;
@@ -41,7 +40,7 @@
 
 .UserHero .UsernameBox {
   position: absolute;
-  top: calc(50% - 2rem);
+  top: calc(50% - 1rem);
   width: 100%;
 }
 .UserHero .UsernameBox > * {
@@ -55,14 +54,14 @@
 .UsernameBox .Username {
   font-size: 1.5rem;
   line-height: 1.75rem;
-  max-height: 3.5rem;
+  height: 1.75rem;
 }
 
 .UsernameBox .UserXP {
   margin-top: 0.25rem;
   font-size: 1.25rem;
   line-height: 1.5rem;
-  max-height: 3rem;
+  height: 1.5rem;
   color: var(--color-green);
 }
 
@@ -77,10 +76,15 @@
   padding: 0 0.5rem;
   color: var(--color-orange);
   position: relative;
+  transition: all linear 200ms;
 }
 
 .UserHero .Nav a:hover {
   color: var(--color-light-orange);
+}
+
+.UserHero .Nav a::after {
+  transition: all linear 200ms;
 }
 
 .UserHero .Nav a:hover::after {

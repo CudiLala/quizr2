@@ -18,7 +18,7 @@ export async function mid_WithUser(req: NextApiRequestX, res: NextApiResponse) {
   else {
     const session: any = await Session.findById(req.ssId).populate(
       "user",
-      "username profilePicture _id"
+      "username profilePicture _id isAdmin"
     );
     if (session?.user) {
       req.user = {
@@ -27,6 +27,8 @@ export async function mid_WithUser(req: NextApiRequestX, res: NextApiResponse) {
         profilePicture: session.user.profilePicture,
         SSDate: session.createdAt,
       };
+      if (session.user.isAdmin) req.user.isAdmin = true;
+      console.log(req.user);
     } else req.user = null;
   }
 }
