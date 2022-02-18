@@ -3,7 +3,7 @@
 }
 .UserHero {
   position: relative;
-  height: 17.5rem;
+  height: 15rem;
   width: 100%;
   margin-top: 5rem;
   position: relative;
@@ -39,9 +39,40 @@
   border-radius: 50%;
 }
 
-.UserHero .Username {
+.UserHero .UsernameBox {
   position: absolute;
   top: calc(50% - 2rem);
+  width: 100%;
+}
+.UserHero .UsernameBox > * {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  overflow: hidden;
+  word-break: break-all;
+}
+
+.UsernameBox .Username {
   font-size: 1.5rem;
-  font-weight: 700;
+  line-height: 1.75rem;
+  max-height: 3.5rem;
+}
+
+.UsernameBox .UserXP {
+  margin-top: 0.25rem;
+  font-size: 1.25rem;
+  line-height: 1.5rem;
+  max-height: 3rem;
+  color: var(--color-green);
+}
+
+.UserHero .Nav {
+  display: flex;
+  padding: 0.5rem;
+  position: absolute;
+  bottom: 0;
+}
+
+.UserHero .Nav a {
+  padding: 0 0.25rem;
 }

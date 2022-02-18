@@ -80,9 +80,14 @@ export const Button: React.FC<Button> = ({
   colored,
   children,
   passProps,
+  _className = "",
 }) => {
   return (
-    <button type={type} className={styles.Button} {...passProps}>
+    <button
+      type={type}
+      className={`${styles.Button} ${_className}`}
+      {...passProps}
+    >
       {children}
     </button>
   );

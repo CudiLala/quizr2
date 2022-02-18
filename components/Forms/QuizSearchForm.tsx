@@ -17,13 +17,13 @@ const QuizSearchForm: React.FC = () => {
   return (
     <form className={styles.QuizSearchForm} autoComplete="off">
       <Box _className={styles.InputContainer} size={[4, 0]} column>
-        <label>Search:</label>
+        <label className="t-sbold-x">Search:</label>
         <Box _className={styles.InputBox} size={[1, 0, 0]}>
           <input type="text" />
         </Box>
       </Box>
       <Box size={[2, 0, 4]} _className={styles.InputContainer} column>
-        <label>Sort By:</label>
+        <label className="t-sbold-x">Sort By:</label>
         <Selection>
           <Options name="popularity">Popularity</Options>
           <Options name="difficulty">Difficulty</Options>

@@ -81,11 +81,15 @@ export const SignInForm: React.FC = () => {
           passProps={{ ref: password }}
         />
         <Box size={[2, 0]}>
-          <Button type="submit">Sign In</Button>
+          <Button type="submit" _className="t-sbold-x">
+            Sign In
+          </Button>
         </Box>
-        <LinkA href="/sign?d=up" _className={styles.Link}>
-          Don&apos;t have an account ?
-        </LinkA>
+        <Box size={[0]}>
+          <LinkA href="/sign?d=up" _className={styles.Link}>
+            Don&apos;t have an account ?
+          </LinkA>
+        </Box>
       </Box>
     </form>
   );
@@ -198,11 +202,15 @@ export const SignUpForm: React.FC = () => {
           passProps={{ ref: confirmPassword }}
         />
         <Box size={[2, 0]}>
-          <Button type="submit">Sign Up</Button>
+          <Button type="submit" _className="t-sbold-x">
+            Sign Up
+          </Button>
         </Box>
-        <LinkA href="/sign" _className={styles.Link}>
-          Already have an account ?
-        </LinkA>
+        <Box size={[0]}>
+          <LinkA href="/sign" _className={styles.Link}>
+            Already have an account ?
+          </LinkA>
+        </Box>
       </Box>
     </form>
   );

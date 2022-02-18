@@ -9,6 +9,7 @@ import { UserContext } from "components/App/AppWrapper";
 import Image from "next/image";
 import UserModel from "database/models/User";
 import connectDB from "database";
+import { LinkA } from "components/Links";
 
 const UserPage: NextPageWithLayout<{ user: any }> = ({ user }) => {
   return (
@@ -49,7 +50,17 @@ const UserHero: React.FC<{ user: any }> = ({ user }) => {
           )}
         </span>
       </div>
-      <p className={styles.Username}>{user?.username && `@${user.username}`}</p>
+      <Box column _className={styles.UsernameBox} size={[4]}>
+        <p className={`${styles.Username} t-sbold`}>
+          {user?.username && `@${user.username}`}
+        </p>
+        <p className={`${styles.UserXP} t-sbold`}>&#127942;500XP</p>
+      </Box>
+      <nav className={styles.Nav}>
+        <LinkA _className="t-sbold-x">Stats</LinkA>
+        <LinkA _className="t-sbold-x">Settings</LinkA>
+        <LinkA _className="t-sbold-x">Dashbord</LinkA>
+      </nav>
     </div>
   );
 };
