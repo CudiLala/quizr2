@@ -10,6 +10,12 @@ import useModal from "hooks/modal";
 
 type modeType = "loading" | "resolve" | "reject";
 
+type OptionProps = {
+  name: string;
+  selected?: { name: string };
+  setSelected?: React.Dispatch<React.SetStateAction<{ name: string }>>;
+};
+
 const CreateQuizPage: NextPageWithLayout = () => {
   const [mode, setMode] = useState<modeType>("loading");
   const user = useContext(UserContext);
@@ -93,6 +99,73 @@ const CreateQuestionForm: React.FC = () => {
         label="Question"
         height="5rem"
       />
+      <p className="t-sbold-x">Options:</p>
+      <Options>
+        <Option name="A" />
+        <Option name="B" />
+        <Option name="C" />
+        <Option name="D" />
+      </Options>
+      <Box size={[2, 0]} _style={{ justifyContent: "flex-end" }}>
+        <button className="btn-major t-sbold-x" type="button">
+          Add
+        </button>
+      </Box>
     </form>
+  );
+};
+
+const Options: React.FC = ({ children }) => {
+  const [selected, setSelected] = useState<{ name: string }>({ name: "" });
+  return (
+    <>
+      {React.Children.map(children, (child, idx) => {
+        //@ts-ignore
+        const option = React.cloneElement(child, {
+          setSelected,
+          //@ts-ignore
+          selected: selected?.name === child?.props.name,
+        });
+        return option;
+      })}
+    </>
+  );
+};
+
+const Option: React.FC<OptionProps> = ({
+  children,
+  name,
+  selected,
+  setSelected,
+}) => {
+  return (
+    <Box
+      size={[4]}
+      _className={`${styles.QuestionOption} ${selected && styles.Selected}`}
+      column
+    >
+      <Inputr name={name} id={name} label="" />
+      <CheckBox
+        label="correct answer"
+        passProps={{ onClick: () => !!setSelected && setSelected({ name }) }}
+      />
+    </Box>
+  );
+};
+
+const CheckBox: React.FC<{ label: string; passProps?: {} }> = ({
+  children,
+  label,
+  passProps = {},
+}) => {
+  return (
+    <Box size={[0]} _style={{ justifyContent: "flex-start" }}>
+      <div className={styles.CheckBox} {...passProps}>
+        <span>
+          <span></span>
+        </span>
+        {label}
+      </div>
+    </Box>
   );
 };

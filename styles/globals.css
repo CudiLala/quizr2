@@ -71,6 +71,8 @@ nav li {
   --color-orange: hsl(39, 100%, 50%);
   --color-green: hsl(120, 100%, 70%);
   --color-light-a-t: hsl(210, 43%, 35%, 0.4);
+  --color-dark-a: hsl(210, 50%, 23%);
+  --color-green-t: hsla(162, 100%, 32%, 0.1);
 
   width: 100%;
   min-height: 100vh;
