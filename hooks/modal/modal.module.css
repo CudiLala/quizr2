@@ -23,7 +23,7 @@
   box-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
   animation-name: slide-up;
   animation-duration: 500ms;
-  max-height: 80%;
+  max-height: 90%;
   overflow: auto;
   -ms-overflow-style: none;
   scrollbar-width: none;
