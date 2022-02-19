@@ -2,10 +2,11 @@ import { UserContext } from "components/App/AppWrapper";
 import Box from "components/Boxes";
 import { LayoutA } from "components/Layout";
 import { LinkA } from "components/Links";
-import { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { NextPageWithLayout } from "types/app";
 import styles from "styles/Admin.module.css";
 import { Inputr, TextArea } from "components/Forms";
+import useModal from "hooks/modal";
 
 type modeType = "loading" | "resolve" | "reject";
 
@@ -34,15 +35,17 @@ CreateQuizPage.getLayout = LayoutA;
 export default CreateQuizPage;
 
 const CreateQuizPageComponent: React.FC = () => {
+  const { Modal, runModal, removeModal } = useModal();
   return (
     <>
+      <Modal />
       <Box column size={[8, 0]}>
         <Box _className={`${styles.Group} box-width`} column>
           <Box size={[0, 2]} _className={styles.Heading}>
             <span className="t-bold">Quiz Details</span>
           </Box>
           <Box size={[0]} _style={{ justifyContent: "flex-end" }}>
-            <span className="btn-major t-sbold-x pointer">Save Details</span>
+            <button className="btn-major t-sbold-x">Save Details</button>
           </Box>
           <CreateQuizForm />
         </Box>
@@ -53,9 +56,13 @@ const CreateQuizPageComponent: React.FC = () => {
             <span className="t-bold">Quiz Questions</span>
           </Box>
           <Box size={[0]} _style={{ justifyContent: "flex-end" }}>
-            <span className="btn-major t-sbold-x pointer">New Question</span>
+            <button
+              className="btn-major t-sbold-x"
+              onClick={() => runModal(<CreateQuestionForm />)}
+            >
+              New Question
+            </button>
           </Box>
-          {/* <CreateQuizForm /> */}
         </Box>
       </Box>
     </>
@@ -72,6 +79,19 @@ const CreateQuizForm: React.FC = () => {
         name="quizIntroText"
         label="Introductory Text"
         height="15rem"
+      />
+    </form>
+  );
+};
+
+const CreateQuestionForm: React.FC = () => {
+  return (
+    <form autoComplete="off">
+      <TextArea
+        id="questionTitle"
+        name="questionTitle"
+        label="Question"
+        height="5rem"
       />
     </form>
   );

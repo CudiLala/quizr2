@@ -105,13 +105,18 @@ p {
   );
   border-radius: 0.25rem;
   color: white;
+  border: none;
+  outline: none;
 }
-.btn-major:hover {
+.btn-major:hover,
+.btn-major:focus {
   background-image: linear-gradient(
     to right,
     hsl(207, 52%, 65%),
     hsl(207, 52%, 56%)
   );
+  border: none;
+  outline: none;
 }
 
 .pointer {
