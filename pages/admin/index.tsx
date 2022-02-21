@@ -7,6 +7,8 @@ import { NextPageWithLayout } from "types/app";
 import styles from "styles/Admin.module.css";
 import { getFetcher } from "utils/fetchers";
 import Group, { GroupHeading } from "components/Generics/Group";
+import List, { LinkList } from "components/Generics/List";
+import { ut_generateNiceDateForPageDisplay } from "utils/generics";
 
 type modeType = "loading" | "resolve" | "reject";
 
@@ -99,8 +101,26 @@ const DraftComponent: React.FC = () => {
       </p>
     );
   return (
-    <div>
-      <p>Drafts</p>
-    </div>
+    <LinkList href="#">
+      {drafts.map((draft) => {
+        const date = ut_generateNiceDateForPageDisplay(
+          new Date(draft.createdAt)
+        );
+        return (
+          <div key={draft._id}>
+            <p>{draft.title}</p>
+            <p
+              style={{
+                color: "var(--color-green)",
+                fontSize: "0.9rem",
+                textAlign: "right",
+              }}
+            >
+              {date}
+            </p>
+          </div>
+        );
+      })}
+    </LinkList>
   );
 };

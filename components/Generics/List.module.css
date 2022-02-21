@@ -1,0 +1,24 @@
+.List {
+  background-color: var(--color-dark-a);
+  border-radius: 0.5rem;
+  margin: 0.25rem 0;
+}
+
+.List .Counter {
+  display: flex;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.25rem;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-bg);
+  color: var(--color-orange);
+}
+
+.List div:nth-child(2) {
+  flex: 1;
+  flex-basis: 100%;
+}
+.List div:nth-child(2) > * {
+  width: 100%;
+}

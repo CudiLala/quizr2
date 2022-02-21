@@ -53,3 +53,20 @@ export function ut_GenerateFace() {
 
   return `https://avatars.dicebear.com/api/avataaars/${seed}.svg?${query}`;
 }
+
+export function ut_generateNiceDateForPageDisplay(date: Date) {
+  function modify(text: string | number) {
+    text = text.toString();
+    if (text.length < 2) text = `0${text}`;
+    return text;
+  }
+
+  const day = modify(date.getDate());
+  const month = modify(date.getMonth() + 1);
+  const year = modify(date.getFullYear());
+  const hour = modify(date.getHours());
+  const minute = modify(date.getMinutes());
+  const second = modify(date.getSeconds());
+
+  return `${day}/${month}/${year}\u2003${hour}:${minute}:${second}`;
+}

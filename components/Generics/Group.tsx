@@ -11,7 +11,7 @@ const Group: React.FC<DefaultProps> = ({
 }) => {
   return (
     <Box
-      size={[8]}
+      size={[6]}
       column
       _className={`${styles.Group} ${_className}`}
       _style={{ ..._style }}
