@@ -5,7 +5,7 @@ import Handler from "handler";
 import connectDB from "database";
 
 const handler = new Handler({
-  onError: function (error, req, res) {
+  onError: function (final, error, req, res) {
     console.log(error);
     if (!req || !res) return; //avoid ts errors
 
@@ -13,10 +13,7 @@ const handler = new Handler({
     const Cookie = ut_InitializeCookie(req, res);
     Cookie.set("login", "", { expires: new Date(Date.now() - 86400000) });
 
-    return res.status(500).json({
-      success: false,
-      error: { name: error.name ?? "", message: error.message ?? "" },
-    });
+    return final(error, req, res);
   },
 });
 
