@@ -28,7 +28,12 @@ export async function mid_WithUser(req: NextApiRequestX, res: NextApiResponse) {
         SSDate: session.createdAt,
       };
       if (session.user.isAdmin) req.user.isAdmin = true;
-      console.log(req.user);
     } else req.user = null;
   }
+}
+
+export async function secureAdmin(req: NextApiRequestX, res: NextApiResponse) {
+  await mid_WithUser(req, res);
+  if (!req?.user?.isAdmin)
+    throw new Error("This user cannot perform this kind of operations");
 }

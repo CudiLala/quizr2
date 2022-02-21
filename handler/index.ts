@@ -1,7 +1,12 @@
 import { NextApiHandler, NextApiRequest, NextApiResponse } from "next";
 
 export default class Handler {
-  runError: (error: any, req?: NextApiRequest, res?: NextApiResponse) => void;
+  runError: (
+    final: (error: any, req?: NextApiRequest, res?: NextApiResponse) => void,
+    error: any,
+    req?: NextApiRequest,
+    res?: NextApiResponse
+  ) => void;
   get: NextApiHandler;
   post: NextApiHandler;
   put: NextApiHandler;
@@ -12,20 +17,18 @@ export default class Handler {
   constructor(
     arg: {
       onError: (
+        final: (
+          error: any,
+          req?: NextApiRequest,
+          res?: NextApiResponse
+        ) => void,
         error: any,
         req?: NextApiRequest,
         res?: NextApiResponse
       ) => void;
     } = {
-      onError: function (error, req, res) {
-        console.log(error);
-        return res?.status(500).json({
-          success: false,
-          error: {
-            name: error.name ?? "",
-            message: error.message ?? "An unexpected Error Occured",
-          },
-        });
+      onError: function (final, error, req, res) {
+        return final(error, req, res);
       },
     }
   ) {
@@ -41,10 +44,10 @@ export default class Handler {
   init(func = async () => {}) {
     return async (req: NextApiRequest, res: NextApiResponse) => {
       func();
-      for (let middleware of this.middlewares) {
-        await middleware(req, res);
-      }
       try {
+        for (let middleware of this.middlewares) {
+          await middleware(req, res);
+        }
         if (req.method === "GET") {
           await this.get(req, res);
         }
@@ -61,8 +64,19 @@ export default class Handler {
           await this.delete(req, res);
         }
       } catch (error) {
-        return this.runError(error, req, res);
+        return this.runError(this.final, error, req, res);
       }
     };
+  }
+
+  final(error: any, req?: NextApiRequest, res?: NextApiResponse) {
+    console.log(error);
+    return res?.status(500).json({
+      success: false,
+      error: {
+        name: error.name ?? "",
+        message: error.message ?? "An unexpected error occured",
+      },
+    });
   }
 }

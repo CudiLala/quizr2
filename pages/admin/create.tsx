@@ -1,12 +1,12 @@
 import { UserContext } from "components/App/AppWrapper";
 import Box from "components/Boxes";
 import { LayoutA } from "components/Layout";
-import { LinkA } from "components/Links";
 import React, { useContext, useEffect, useState } from "react";
 import { NextPageWithLayout } from "types/app";
 import styles from "styles/Admin.module.css";
 import { Inputr, TextArea } from "components/Forms";
 import useModal from "hooks/modal";
+import Group, { GroupHeading } from "components/Generics/Group";
 
 type modeType = "loading" | "resolve" | "reject";
 
@@ -46,21 +46,17 @@ const CreateQuizPageComponent: React.FC = () => {
     <>
       <Modal />
       <Box column size={[8, 0]}>
-        <Box _className={`${styles.Group} box-width`} column>
-          <Box size={[0, 2]} _className={styles.Heading}>
-            <span className="t-bold">Quiz Details</span>
-          </Box>
+        <Group>
+          <GroupHeading>Quiz Details</GroupHeading>
           <Box size={[0]} _style={{ justifyContent: "flex-end" }}>
             <button className="btn-major t-sbold-x">Save Details</button>
           </Box>
           <CreateQuizForm />
-        </Box>
+        </Group>
       </Box>
       <Box column size={[8, 0]}>
-        <Box _className={`${styles.Group} box-width`} column>
-          <Box size={[0, 2]} _className={styles.Heading}>
-            <span className="t-bold">Quiz Questions</span>
-          </Box>
+        <Group>
+          <GroupHeading>Quiz Questions</GroupHeading>
           <Box size={[0]} _style={{ justifyContent: "flex-end" }}>
             <button
               className="btn-major t-sbold-x"
@@ -69,7 +65,7 @@ const CreateQuizPageComponent: React.FC = () => {
               New Question
             </button>
           </Box>
-        </Box>
+        </Group>
       </Box>
     </>
   );

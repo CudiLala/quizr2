@@ -73,7 +73,6 @@
 .InputBox input,
 .TextAreaBox textarea {
   display: flex;
-  max-width: 420px;
   width: 100%;
   background-color: transparent;
   border: 2px solid var(--color-light-a);

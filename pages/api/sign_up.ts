@@ -4,12 +4,10 @@ import { validateSignUpForPost } from "validators";
 import Handler from "handler";
 
 const handler = new Handler({
-  onError: function (error, req, res) {
+  onError: function (final, error, req, res) {
     if (error.code == 11000)
       error = { name: "", message: "username/email is already taken" };
-    if (!error.message)
-      error = { name: "", message: "An unexpected error occured" };
-    return res?.status(500).json({ success: false, error });
+    return final(error, req, res);
   },
 });
 
