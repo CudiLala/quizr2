@@ -1,6 +1,6 @@
 import User from "database/models/User";
 import connectDB from "database";
-import { SignUpError } from "Errors";
+import { SignUpError } from "errors";
 import Session from "database/models/Session";
 import bcrypt from "bcrypt";
 import { modifyForRegex } from "validators";

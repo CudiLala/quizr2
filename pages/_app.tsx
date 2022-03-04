@@ -1,5 +1,5 @@
 import "../styles/globals.css";
-import AppWrapper from "components/App/AppWrapper";
+import AppWrapper from "components/app/AppWrapper";
 import type { AppPropsWithLayout } from "types/app";
 import React from "react";
 import Head from "next/head";

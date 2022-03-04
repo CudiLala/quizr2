@@ -1,6 +1,6 @@
 import React from "react";
-import Box from "components/Boxes";
-import styles from "./List.module.css";
+import Box from "components/boxes";
+import styles from "styles/components/lists.module.css";
 import Link from "next/link";
 
 const List: React.FC = ({ children }) => {
@@ -20,15 +20,13 @@ const List: React.FC = ({ children }) => {
   );
 };
 
-export const LinkList: React.FC<{ href: string }> = ({
-  children,
-  href = "#",
-}) => {
+export const LinkList: React.FC = ({ children }) => {
   return (
     <>
       {React.Children.map(children, (child, idx) => {
         return (
-          <Link href={href}>
+          //@ts-ignore
+          <Link href={child.props.passHref}>
             <a style={{ display: "block" }}>
               <Box size={[4]} _className={styles.List}>
                 <Box size={[0, 4]}>

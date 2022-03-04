@@ -1,6 +1,6 @@
-import { LayoutA } from "components/Layout";
+import { LayoutA } from "components/layouts";
 import { NextPageWithLayout } from "types/app";
-import Box from "components/Boxes";
+import Box from "components/boxes";
 
 const PageName: NextPageWithLayout = () => {
   return (

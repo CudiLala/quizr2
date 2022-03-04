@@ -1,5 +1,5 @@
 import React from "react";
-import { LogoA, LogoB } from "./Icons";
+import { LogoA, LogoB } from "./icons";
 
 const Logo: React.FC = () => {
   return (

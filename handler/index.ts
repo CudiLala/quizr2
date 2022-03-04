@@ -43,7 +43,7 @@ export default class Handler {
 
   init(func = async () => {}) {
     return async (req: NextApiRequest, res: NextApiResponse) => {
-      func();
+      await func();
       try {
         for (let middleware of this.middlewares) {
           await middleware(req, res);

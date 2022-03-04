@@ -1,14 +1,15 @@
-import { UserContext } from "components/App/AppWrapper";
-import Box from "components/Boxes";
-import { LayoutA } from "components/Layout";
-import { LinkA } from "components/Links";
+import { UserContext } from "components/app/AppWrapper";
+import Box from "components/boxes";
+import { LayoutA } from "components/layouts";
+import { LinkA } from "components/links";
 import { useContext, useEffect, useState } from "react";
 import { NextPageWithLayout } from "types/app";
-import styles from "styles/Admin.module.css";
+import styles from "styles/pages/admin.module.css";
 import { getFetcher } from "utils/fetchers";
-import Group, { GroupHeading } from "components/Generics/Group";
-import List, { LinkList } from "components/Generics/List";
+import Group, { GroupHeading } from "components/generics/groups";
+import List, { LinkList } from "components/generics/lists";
 import { ut_generateNiceDateForPageDisplay } from "utils/generics";
+import LinkStyles from "components/Links/Links.module.css";
 
 type modeType = "loading" | "resolve" | "reject";
 
@@ -101,26 +102,51 @@ const DraftComponent: React.FC = () => {
       </p>
     );
   return (
-    <LinkList href="#">
-      {drafts.map((draft) => {
-        const date = ut_generateNiceDateForPageDisplay(
-          new Date(draft.createdAt)
-        );
-        return (
-          <div key={draft._id}>
-            <p>{draft.title}</p>
-            <p
-              style={{
-                color: "var(--color-green)",
-                fontSize: "0.9rem",
-                textAlign: "right",
-              }}
-            >
-              {date}
-            </p>
-          </div>
-        );
-      })}
-    </LinkList>
+    <>
+      <LinkList>
+        {drafts.map((draft) => {
+          const date = ut_generateNiceDateForPageDisplay(
+            new Date(draft.createdAt)
+          );
+          return (
+            //@ts-ignore
+            <div key={draft._id} passHref={`admin/create?id=${draft._id}`}>
+              <p>{draft.title}</p>
+              <p
+                style={{
+                  color: "var(--color-green)",
+                  fontSize: "0.9rem",
+                  textAlign: "right",
+                }}
+              >
+                {date}
+              </p>
+            </div>
+          );
+        })}
+      </LinkList>
+      <Box size={[0]}>
+        {!max && (
+          <button
+            className={`${LinkStyles.LinkB} t-i-reg t-small`}
+            onClick={async () => setDrafts(await loadMoreDrafts())}
+            style={{ marginRight: "1rem" }}
+          >
+            Load more
+          </button>
+        )}
+        {drafts.length > 4 && (
+          <button
+            className={`${LinkStyles.LinkB} t-i-reg t-small t-orange`}
+            onClick={async () => {
+              setDrafts([drafts[0], drafts[1], drafts[2]]);
+              setMax(false);
+            }}
+          >
+            Collapse
+          </button>
+        )}
+      </Box>
+    </>
   );
 };

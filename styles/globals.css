@@ -1,7 +1,7 @@
 /*#region */
 @font-face {
   font-family: OpenSans;
-  src: url("../fonts/OpenSans/OpenSans-VariableFont_wdth.ttf");
+  src: url("../fonts/OpenSans/static/OpenSans/OpenSans-Regular.ttf");
 }
 @font-face {
   font-family: OpenSansLight;
@@ -14,6 +14,10 @@
 @font-face {
   font-family: OpenSansBold;
   src: url("../fonts/OpenSans/static/OpenSans/OpenSans-Bold.ttf");
+}
+@font-face {
+  font-family: OpenSansItalicsRegular;
+  src: url("../fonts/OpenSans/static/OpenSans/OpenSans-Italic.ttf");
 }
 /*#endregion */
 
@@ -70,6 +74,7 @@ nav li {
   --color-light-orange: hsl(32, 100%, 70%);
   --color-orange: hsl(39, 100%, 50%);
   --color-green: hsl(120, 100%, 70%);
+  --color-green-light: hsl(120, 100%, 80%);
   --color-light-a-t: hsl(210, 43%, 35%, 0.4);
   --color-dark-a: hsl(210, 50%, 24%);
   --color-green-t: hsla(162, 100%, 32%, 0.1);
@@ -125,6 +130,9 @@ p {
   cursor: pointer;
 }
 
+.t-small {
+  font-size: 0.9rem;
+}
 .t-bold {
   font-family: OpenSansBold, "Open Sans", -apple-system, BlinkMacSystemFont,
     "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
@@ -145,6 +153,16 @@ p {
   font-size: 0.95rem;
 }
 
+.t-i-reg {
+  font-family: OpenSansItalicsRegular, "Open Sans", -apple-system,
+    BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
+    "Open Sans", "Helvetica Neue", sans-serif;
+  font-style: italic;
+}
+
 .t-green {
-  color: var(--color-green);
+  color: var(--color-green) !important;
+}
+.t-orange {
+  color: var(--color-orange) !important;
 }

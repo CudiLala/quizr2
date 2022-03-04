@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { DefaultProps } from "types/app";
-import styles from "./PseudoButtons.module.css";
+import styles from "styles/components/pseudoButtons.module.css";
 
 interface DescProps extends DefaultProps {
   icon: React.ReactElement;

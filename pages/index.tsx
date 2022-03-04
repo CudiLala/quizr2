@@ -1,8 +1,8 @@
 import { NextPageWithLayout } from "types/app";
-import { LayoutA } from "components/Layout";
-import Box from "components/Boxes";
-import { QuizSearchForm } from "components/Forms";
-import { NeonDivider } from "components/Generics/Dividers";
+import { LayoutA } from "components/layouts";
+import Box from "components/boxes";
+import { QuizSearchForm } from "components/forms";
+import { NeonDivider } from "components/generics/dividers";
 
 const Home: NextPageWithLayout = () => {
   return (

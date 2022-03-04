@@ -1,4 +1,4 @@
-import { SignUpError } from "Errors";
+import { SignUpError } from "errors";
 import User from "database/models/User";
 import bcrypt from "bcrypt";
 import connectDB from "database";

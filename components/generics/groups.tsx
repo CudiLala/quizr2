@@ -1,5 +1,5 @@
-import styles from "./Group.module.css";
-import Box from "components/Boxes";
+import styles from "styles/components/groups.module.css";
+import Box from "components/boxes";
 import React from "react";
 import { DefaultProps } from "types/app";
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { HeaderA } from "components/Headers";
+import { HeaderA } from "components/headers";
 
 export const LayoutA: React.FC = ({ children }) => {
   return (

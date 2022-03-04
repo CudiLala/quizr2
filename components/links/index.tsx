@@ -2,7 +2,7 @@ import Logo from "components/logo";
 import Link from "next/link";
 import React from "react";
 import { DefaultProps } from "types/app";
-import styles from "./Links.module.css";
+import styles from "styles/components/links.module.css";
 
 interface Props extends DefaultProps {
   href?: string;

@@ -9,6 +9,19 @@
   animation-timing-function: linear;
 }
 
+.LinkB {
+  background-color: transparent;
+  color: var(--color-green);
+  display: flex;
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+.LinkB:hover,
+.LinkB:focus {
+  color: var(--color-green-light);
+}
+
 @keyframes blink {
   0%,
   100% {

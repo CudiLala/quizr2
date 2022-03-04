@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
-import styles from "./Headers.module.css";
-import { LinkLogo, LinkA } from "components/Links";
+import styles from "styles/components/headers.module.css";
+import { LinkLogo, LinkA } from "components/links";
 import {
   AboutIcon,
   LeaderBoardIcon,
@@ -10,11 +10,11 @@ import {
   SignInIcon,
   SignOutIcon,
   SignUpIcon,
-} from "components/Icons";
-import { DescButton, DescButton2 } from "components/PseudoButtons";
-import { UserContext } from "components/App/AppWrapper";
+} from "components/icons";
+import { DescButton, DescButton2 } from "components/psuedoButtons";
+import { UserContext } from "components/app/AppWrapper";
 import Image from "next/image";
-import Box from "components/Boxes";
+import Box from "components/boxes";
 
 export const HeaderA: React.FC = () => {
   const [width, setWidth] = useState(

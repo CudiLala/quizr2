@@ -1,6 +1,6 @@
-import styles from "./Forms.module.css";
-import { EyeCloseIcon, EyeOpenIcon } from "components/Icons";
-import Box from "components/Boxes";
+import styles from "styles/components/forms.module.css";
+import { EyeCloseIcon, EyeOpenIcon } from "components/icons";
+import Box from "components/boxes";
 import React, { useState } from "react";
 import { DefaultProps } from "types/app";
 
@@ -137,6 +137,6 @@ export const TextArea: React.FC<TextAreaProps> = ({
   );
 };
 
-export { default as QuizSearchForm } from "./QuizSearchForm";
-export { SignInForm } from "./SignForm";
-export { SignUpForm } from "./SignForm";
+export { default as QuizSearchForm } from "./quizSearchForm";
+export { SignInForm } from "./signForm";
+export { SignUpForm } from "./signForm";

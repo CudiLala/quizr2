@@ -1,7 +1,7 @@
-import Box from "components/Boxes";
+import Box from "components/boxes";
 import React, { useEffect, useState } from "react";
 import { DefaultProps } from "types/app";
-import styles from "./Forms.module.css";
+import styles from "styles/components/forms.module.css";
 
 interface PropOptions extends DefaultProps {
   name: string;

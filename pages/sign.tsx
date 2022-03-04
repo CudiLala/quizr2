@@ -1,12 +1,12 @@
-import { LayoutA } from "components/Layout";
+import { LayoutA } from "components/layouts";
 import { NextPageWithLayout } from "types/app";
-import { SignInForm, SignUpForm } from "components/Forms";
-import Box from "components/Boxes";
+import { SignInForm, SignUpForm } from "components/forms";
+import Box from "components/boxes";
 import { useEffect, useState, useLayoutEffect, useContext } from "react";
 import { useRouter } from "next/router";
 import { deleteFetcher } from "utils/fetchers";
 import Cookies from "js-cookie";
-import { SetLoginContext } from "components/App/AppWrapper";
+import { SetLoginContext } from "components/app/AppWrapper";
 
 type Props = "signIn" | "signUp" | "signOut";
 

@@ -1,15 +1,15 @@
-import Box from "components/Boxes";
-import { LayoutA } from "components/Layout";
+import Box from "components/boxes";
+import { LayoutA } from "components/layouts";
 import { useRouter } from "next/router";
 import type { NextPageWithLayout } from "types/app";
-import styles from "styles/User.module.css";
+import styles from "styles/pages/user.module.css";
 import React, { useContext, useEffect, useState } from "react";
 import { getFetcher } from "utils/fetchers";
-import { UserContext } from "components/App/AppWrapper";
+import { UserContext } from "components/app/AppWrapper";
 import Image from "next/image";
 import UserModel from "database/models/User";
 import connectDB from "database";
-import { LinkA } from "components/Links";
+import { LinkA } from "components/links";
 
 const UserPage: NextPageWithLayout<{ user: any }> = ({ user }) => {
   return (

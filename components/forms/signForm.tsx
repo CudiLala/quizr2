@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
-import styles from "./Forms.module.css";
-import Box from "components/Boxes";
-import { Button } from "components/PseudoButtons";
-import { LinkA } from "components/Links";
+import styles from "styles/components/forms.module.css";
+import Box from "components/boxes";
+import { Button } from "components/psuedoButtons";
+import { LinkA } from "components/links";
 import { Inputr, PasswordInputr } from ".";
 import { postFetcher } from "utils/fetchers";
-import { SetLoginContext } from "components/App/AppWrapper";
+import { SetLoginContext } from "components/app/AppWrapper";
 
 export const SignInForm: React.FC = () => {
   const user = useRef<HTMLInputElement>(null);
