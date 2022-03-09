@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "./modal.module.css";
+import styles from "styles/hooks/modal.module.css";
 
 export default function useModal() {
   const [modalChild, setModalChild] = useState<any>(null);

@@ -1,12 +1,18 @@
-import { UserContext } from "components/app/AppWrapper";
-import Box from "components/boxes";
-import { LayoutA } from "components/layouts";
+//react
 import React, { useContext, useEffect, useState } from "react";
-import { NextPageWithLayout } from "types/app";
-import styles from "styles/pages/admin.module.css";
+//components
 import { Inputr, TextArea } from "components/forms";
-import useModal from "hooks/modal";
 import Group, { GroupHeading } from "components/generics/groups";
+import { LayoutA } from "components/layouts";
+import Box from "components/boxes";
+//style
+import styles from "styles/pages/admin.module.css";
+//types
+import { NextPageWithLayout } from "types/app";
+//hooks
+import useModal from "hooks/modal";
+//contexts
+import { UserContext } from "components/app/AppWrapper";
 
 type modeType = "loading" | "resolve" | "reject";
 

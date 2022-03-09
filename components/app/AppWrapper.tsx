@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer, useContext, useState } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 import Cookies from "js-cookie";
 import { getFetcher } from "utils/fetchers";
 

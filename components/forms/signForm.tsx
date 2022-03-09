@@ -15,7 +15,7 @@ export const SignInForm: React.FC = () => {
 
   function runError(error: any) {
     //@ts-ignore
-    if (error.name) document.signIn[error.name].focus();
+    if (error.name) document.signIn?.[error.name]?.focus();
     setMsg({ type: "error", value: error.message });
   }
 
@@ -43,55 +43,57 @@ export const SignInForm: React.FC = () => {
   }, []);
 
   return (
-    <form
-      className={`${styles.SignInForm} box-width`}
-      name="signIn"
-      autoComplete="off"
-      onSubmit={loginUser}
-    >
-      <legend className="t-bold">Sign In</legend>
-      <Box size={[2, 0, 0]} column>
-        <p
-          style={{
-            fontSize: "0.9rem",
-            color: `${
-              msg.type === "normal"
-                ? "var(--color-green)"
-                : "var(--color-orange)"
-            }`,
-          }}
-        >
-          {msg.value}
-        </p>
-      </Box>
-      <Box size={[2, 0]} column>
-        <Inputr
-          type="text"
-          name="user"
-          id="user"
-          label="Username/Email"
-          placeholder="Enter your username"
-          passProps={{ ref: user }}
-        />
-        <PasswordInputr
-          name="password"
-          id="password"
-          label="Password"
-          placeholder="Enter your password"
-          passProps={{ ref: password }}
-        />
-        <Box size={[2, 0]}>
-          <Button type="submit" _className="t-sbold-x">
-            Sign In
-          </Button>
+    <>
+      <form
+        className={`${styles.SignInForm} box-width`}
+        name="signIn"
+        autoComplete="off"
+        onSubmit={loginUser}
+      >
+        <legend className="t-bold">Sign In</legend>
+        <Box size={[2, 0, 0]} column>
+          <p
+            style={{
+              fontSize: "0.9rem",
+              color: `${
+                msg.type === "normal"
+                  ? "var(--color-green)"
+                  : "var(--color-orange)"
+              }`,
+            }}
+          >
+            {msg.value}
+          </p>
         </Box>
-        <Box size={[0]}>
-          <LinkA href="/sign?d=up" _className={styles.Link}>
-            Don&apos;t have an account ?
-          </LinkA>
+        <Box size={[2, 0]} column>
+          <Inputr
+            type="text"
+            name="user"
+            id="user"
+            label="Username/Email"
+            placeholder="Enter your username"
+            passProps={{ ref: user }}
+          />
+          <PasswordInputr
+            name="password"
+            id="password"
+            label="Password"
+            placeholder="Enter your password"
+            passProps={{ ref: password }}
+          />
+          <Box size={[2, 0]}>
+            <Button type="submit" _className="t-sbold-x">
+              Sign In
+            </Button>
+          </Box>
+          <Box size={[0]}>
+            <LinkA href="/sign?d=up" _className={styles.Link}>
+              Don&apos;t have an account ?
+            </LinkA>
+          </Box>
         </Box>
-      </Box>
-    </form>
+      </form>
+    </>
   );
 };
 
