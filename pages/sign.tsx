@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 import { deleteFetcher } from "utils/fetchers";
 import Cookies from "js-cookie";
 import { SetLoginContext } from "components/app/AppWrapper";
+import { LoaderContext } from "components/app/AppWrapper";
 
 type Props = "signIn" | "signUp" | "signOut";
 
@@ -42,13 +43,16 @@ const SignOutComponent: React.FC = () => {
   const [msg, setMsg] = useState({ type: "normal", value: "Signing Out..." });
   const router = useRouter();
   const setLogin = useContext(SetLoginContext);
+  const [runLoader, removeLoader] = useContext(LoaderContext);
 
   /*eslint-disable */
   useEffect(() => {
     let timer;
     (async () => {
+      runLoader();
       const { data } = await deleteFetcher("/api/sign_out");
       if (!data || !data.success) {
+        removeLoader();
         setMsg({
           type: "error",
           value: "There was an error while signing out",
@@ -56,7 +60,7 @@ const SignOutComponent: React.FC = () => {
         timer = setTimeout(() => {
           setMsg({ type: "normal", value: "Redirecting..." });
           router.push("/");
-        }, 5000);
+        }, 3000);
       } else {
         setMsg({ type: "normal", value: "Clearing Storage and Cookies..." });
         localStorage.removeItem("user");

@@ -16,6 +16,7 @@ import { getFetcher } from "utils/fetchers";
 import { ut_generateNiceDateForPageDisplay } from "utils/generics";
 //contexts
 import { UserContext } from "components/app/AppWrapper";
+import { LoaderContext } from "components/app/AppWrapper";
 
 type modeType = "loading" | "resolve" | "reject";
 
@@ -73,14 +74,17 @@ export default AdminPage;
 const DraftComponent: React.FC = () => {
   const [drafts, setDrafts] = useState<any[] | "pending" | "error">("pending");
   const [max, setMax] = useState<boolean>(false);
+  const [runLoader, removeLoader] = useContext(LoaderContext);
 
   async function loadMoreDrafts() {
+    runLoader();
     let limit = 3;
     if (Array.isArray(drafts)) limit = drafts.length + 3;
 
     const { data } = await getFetcher(
       `/api/quiz/draft?limit=${limit}&sort=-createdAt`
     );
+    removeLoader();
     if (!data || !data.success) return "error";
     if (data.drafts.length < limit) setMax(true);
     return data.drafts;

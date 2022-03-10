@@ -6,12 +6,16 @@ import { LinkA } from "components/links";
 import { Inputr, PasswordInputr } from ".";
 import { postFetcher } from "utils/fetchers";
 import { SetLoginContext } from "components/app/AppWrapper";
+import { LoaderContext } from "components/app/AppWrapper";
+import { useRouter } from "next/router";
 
 export const SignInForm: React.FC = () => {
   const user = useRef<HTMLInputElement>(null);
   const password = useRef<HTMLInputElement>(null);
   const [msg, setMsg] = useState({ type: "normal", value: "" });
   const setLogin = useContext(SetLoginContext);
+  const [runLoader, removeLoader] = useContext(LoaderContext);
+  const router = useRouter();
 
   function runError(error: any) {
     //@ts-ignore
@@ -21,11 +25,13 @@ export const SignInForm: React.FC = () => {
 
   async function loginUser(ev: any) {
     ev.preventDefault();
+    runLoader();
     setMsg({ type: "normal", value: "Loading..." });
     const { data } = await postFetcher("/api/sign_in", {
       user: user.current?.value,
       password: password.current?.value,
     });
+    removeLoader();
     if (!data)
       return runError({ name: "", message: "An unknown error occured" });
     if (!data.success) return runError(data.error);
@@ -33,6 +39,7 @@ export const SignInForm: React.FC = () => {
     //changing the login global state for rerendering and user refetching
     setLogin({ value: true });
     setMsg({ type: "normal", value: "Login successful" });
+    router.push("/");
   }
 
   useEffect(() => {
@@ -104,6 +111,8 @@ export const SignUpForm: React.FC = () => {
   const confirmPassword = useRef<HTMLInputElement>(null);
   const [msg, setMsg] = useState({ type: "normal", value: "" });
   const setLogin = useContext(SetLoginContext);
+  const [runLoader, removeLoader] = useContext(LoaderContext);
+  const router = useRouter();
 
   function runError(error: any) {
     //@ts-ignore
@@ -113,6 +122,7 @@ export const SignUpForm: React.FC = () => {
 
   async function registerUser(ev: any) {
     ev.preventDefault();
+    runLoader();
     setMsg({ type: "normal", value: "Loading..." });
 
     //Registering
@@ -123,9 +133,14 @@ export const SignUpForm: React.FC = () => {
       password: password.current?.value,
       confirmPassword: confirmPassword.current?.value,
     });
-    if (!data)
+    if (!data) {
+      removeLoader();
       return runError({ name: "", message: "An unknown error occured" });
-    if (!data.success) return runError(data.error);
+    }
+    if (!data.success) {
+      removeLoader();
+      return runError(data.error);
+    }
     setMsg({ type: "normal", value: "Registration successful. Logging in..." });
 
     //logging in
@@ -133,13 +148,20 @@ export const SignUpForm: React.FC = () => {
       user: username.current?.value,
       password: password.current?.value,
     });
-    if (!loginData)
+
+    if (!loginData) {
+      removeLoader();
       return runError({ name: "", message: "An unknown error occured" });
-    if (!loginData.success) return runError(loginData.error);
+    }
+    if (!loginData.success) {
+      removeLoader();
+      return runError(loginData.error);
+    }
 
     //changing the login global state for rerendering and refetching of user
     setLogin({ value: true });
     setMsg({ type: "normal", value: "Login successful" });
+    router.push("/");
   }
 
   useEffect(() => {
