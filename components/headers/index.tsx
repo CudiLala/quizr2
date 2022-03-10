@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useLayoutEffect, useState } from "react";
 import styles from "styles/components/headers.module.css";
 import { LinkLogo, LinkA } from "components/links";
 import {
@@ -17,11 +17,13 @@ import Image from "next/image";
 import Box from "components/boxes";
 
 export const HeaderA: React.FC = () => {
-  const [width, setWidth] = useState(
-    typeof window === "undefined" ? 0 : window.innerWidth
-  );
+  const [width, setWidth] = useState(0);
   const user = useContext(UserContext);
   const resizeHandler = () => setWidth(window.innerWidth);
+
+  useLayoutEffect(() => {
+    resizeHandler();
+  }, []);
 
   useEffect(() => {
     window.addEventListener("resize", resizeHandler);

@@ -26,7 +26,7 @@ export const LinkList: React.FC = ({ children }) => {
       {React.Children.map(children, (child, idx) => {
         return (
           //@ts-ignore
-          <Link href={child.props.passHref}>
+          <Link href={child.props.passhref}>
             <a style={{ display: "block" }}>
               <Box size={[4]} _className={styles.List}>
                 <Box size={[0, 4]}>

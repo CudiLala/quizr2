@@ -1,0 +1,33 @@
+.Notepad {
+  position: fixed;
+  top: 0;
+  background-color: transparent;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  z-index: 17;
+}
+
+.NoteBox {
+  width: 100%;
+  max-width: 900px;
+  padding: 0.5rem 1rem;
+}
+
+.Note {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  color: var(--color-green);
+  background-color: #252525;
+  border-radius: 0.5rem;
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+
+.Note:not(:last-child) {
+  margin-bottom: 0.5rem;
+}
+
+.Note.Error {
+  color: var(--color-orange);
+}

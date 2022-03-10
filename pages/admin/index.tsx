@@ -12,11 +12,13 @@ import { NextPageWithLayout } from "types/app";
 import styles from "styles/pages/admin.module.css";
 import LinkStyles from "styles/components/links.module.css";
 //utils
-import { getFetcher } from "utils/fetchers";
+import { getFetcher, postFetcher } from "utils/fetchers";
 import { ut_generateNiceDateForPageDisplay } from "utils/generics";
 //contexts
 import { UserContext } from "components/app/AppWrapper";
 import { LoaderContext } from "components/app/AppWrapper";
+import { NoteContext } from "components/app/AppWrapper";
+import { useRouter } from "next/router";
 
 type modeType = "loading" | "resolve" | "reject";
 
@@ -44,10 +46,31 @@ const AdminPage: NextPageWithLayout = () => {
 AdminPage.getLayout = LayoutA;
 
 const AdminPageComponent: React.FC = () => {
+  const router = useRouter();
+  const [runLoader] = useContext(LoaderContext);
+  const [addText] = useContext(NoteContext);
+
+  async function createDraft(ev: any) {
+    ev.preventDefault();
+    runLoader();
+    const { data } = await postFetcher("/api/quiz/draft", {});
+    if (data?.success) return router.push(`/admin/create?id=${data.draft._id}`);
+    addText({
+      text: "Error creating quiz",
+      id: "quizcreater",
+      timeOut: 4,
+      isError: true,
+    });
+  }
+
   return (
     <>
       <Box size={[0, 0, 4]} _style={{ justifyContent: "flex-end" }}>
-        <LinkA _className="btn-major t-sbold-x" href="/admin/create">
+        <LinkA
+          _className="btn-major t-sbold-x"
+          href="/admin/create"
+          passProps={{ onClick: createDraft }}
+        >
           Create Quiz
         </LinkA>
       </Box>
@@ -120,7 +143,7 @@ const DraftComponent: React.FC = () => {
           );
           return (
             //@ts-ignore
-            <div key={draft._id} passHref={`admin/create?id=${draft._id}`}>
+            <div key={draft._id} passhref={`admin/create?id=${draft._id}`}>
               <p>{draft.title}</p>
               <p
                 style={{

@@ -2,7 +2,9 @@ import React, { useEffect, useReducer, useState } from "react";
 import Cookies from "js-cookie";
 import { getFetcher } from "utils/fetchers";
 import useLoader from "hooks/loader";
+import useNotepad from "hooks/notepad";
 import { useRouter } from "next/router";
+import type { addText, removeText } from "types/hooks/notepad";
 
 type User = {
   username: string;
@@ -25,6 +27,10 @@ export const LoaderContext = React.createContext<[() => void, () => void]>([
   () => {},
   () => {},
 ]);
+export const NoteContext = React.createContext<[addText, removeText]>([
+  () => {},
+  () => {},
+]);
 
 function userReducer(state: UserState, action: UserAction) {
   if (action.type === "nullify") return null;
@@ -41,6 +47,8 @@ const AppWrapper: React.FC = ({ children }) => {
   const [user, userDispatch] = useReducer(userReducer, getUserFromStore());
   //loader
   const [Loader, runLoader, removeLoader] = useLoader();
+  //notepad
+  const [NotePad, addText, removeText] = useNotepad();
   //router
   const router = useRouter();
 
@@ -83,9 +91,12 @@ const AppWrapper: React.FC = ({ children }) => {
       <UserContext.Provider value={user}>
         <SetLoginContext.Provider value={setLogin}>
           <Loader />
-          <LoaderContext.Provider value={[runLoader, removeLoader]}>
-            {children}
-          </LoaderContext.Provider>
+          <NotePad />
+          <NoteContext.Provider value={[addText, removeText]}>
+            <LoaderContext.Provider value={[runLoader, removeLoader]}>
+              {children}
+            </LoaderContext.Provider>
+          </NoteContext.Provider>
         </SetLoginContext.Provider>
       </UserContext.Provider>
     </div>

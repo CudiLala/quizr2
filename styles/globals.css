@@ -80,6 +80,9 @@ nav li {
   --color-green-t: hsla(162, 100%, 32%, 0.1);
   --color-grey-dark: #333333;
 
+  --shadow: 0 0 5px rgba(255, 255, 255, 0.1);
+  --shadow-2: 0 0 2px rgba(255, 255, 255, 0.1);
+
   width: 100%;
   min-height: 100vh;
   background-color: var(--color-bg);
@@ -125,6 +128,21 @@ p {
   );
   border: none;
   outline: none;
+}
+
+.btn-minor {
+  padding: 0.1rem 1rem;
+  border-radius: 0.25rem;
+  color: var(--color-light-b);
+  outline: none;
+  border: 0.2rem solid var(--color-light-a);
+  background-color: transparent;
+  transition: all 200ms ease-out;
+  box-shadow: var(--shadow-2);
+}
+.btn-minor:hover {
+  background-color: var(--color-light-a);
+  color: var(--color-light-c);
 }
 
 .pointer {
